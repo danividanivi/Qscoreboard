@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>img/cwlsinfondo.png</file>
+        <file>img/Muralla_-_IM000805.jpg</file>
+    </qresource>
+    <qresource prefix="/sound">
+        <file>sound/airhorn.wav</file>
+    </qresource>
+</RCC>
