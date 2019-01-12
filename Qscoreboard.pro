@@ -27,14 +27,20 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    digitalclock.cpp
+    digitalclock.cpp \
+    scoredisplay.cpp \
+    timeoffdisplay.cpp
 
 HEADERS += \
         mainwindow.h \
-    digitalclock.h
+    digitalclock.h \
+    scoredisplay.h \
+    timeoffdisplay.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    scoredisplay.ui \
+    timeoffdisplay.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

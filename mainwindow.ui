@@ -15,48 +15,6 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="2" column="7" rowspan="2">
-     <widget class="QPushButton" name="pushButton_6">
-      <property name="text">
-       <string>+1</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="3" colspan="4">
-     <widget class="QLabel" name="label_3">
-      <property name="font">
-       <font>
-        <pointsize>18</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Qscoreboard</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="2">
-     <widget class="QPushButton" name="pushButton_12">
-      <property name="text">
-       <string>Reset</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QPushButton" name="pushButton">
-      <property name="text">
-       <string>+1</string>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>20</width>
-        <height>20</height>
-       </size>
-      </property>
-     </widget>
-    </item>
     <item row="5" column="3" colspan="2">
      <widget class="QLineEdit" name="lineEdit">
       <property name="text">
@@ -67,24 +25,13 @@
       </property>
      </widget>
     </item>
-    <item row="11" column="6">
-     <widget class="QPushButton" name="pushButton_13">
+    <item row="10" column="4">
+     <widget class="QLineEdit" name="lineEdit_2">
       <property name="text">
-       <string>Reset</string>
+       <string>08</string>
       </property>
-     </widget>
-    </item>
-    <item row="2" column="3" rowspan="3" colspan="2">
-     <widget class="QLCDNumber" name="lcdNumber_3">
-      <property name="intValue" stdset="0">
-       <number>30</number>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="7">
-     <widget class="QPushButton" name="pushButton_5">
-      <property name="text">
-       <string>-1</string>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>
@@ -103,40 +50,48 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="3" colspan="2">
-     <widget class="QLabel" name="label_4">
+    <item row="2" column="8" rowspan="2">
+     <widget class="QPushButton" name="pushButton_6">
       <property name="text">
-       <string>Shot Clock</string>
+       <string>+1</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="2">
+     <widget class="QPushButton" name="pushButton_12">
+      <property name="text">
+       <string>Reset</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="10" rowspan="5">
+     <widget class="QLCDNumber" name="lcdNumber_2"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QPushButton" name="pushButton">
+      <property name="text">
+       <string>+1</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>20</width>
+        <height>20</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="10" column="7">
+     <widget class="QLineEdit" name="lineEdit_3">
+      <property name="text">
+       <string>00</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>
-    <item row="6" column="5">
-     <widget class="QLabel" name="label_6">
-      <property name="font">
-       <font>
-        <pointsize>16</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Time</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="10" column="8">
-     <widget class="QPushButton" name="pushButton_10">
-      <property name="text">
-       <string>-1</string>
-      </property>
-     </widget>
-    </item>
-    <item row="6" column="0" rowspan="2" colspan="2">
-     <widget class="QLabel" name="label_11">
+    <item row="6" column="9" rowspan="2" colspan="2">
+     <widget class="QLabel" name="label_12">
       <property name="maximumSize">
        <size>
         <width>500</width>
@@ -147,39 +102,41 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="resource.qrc">:/img/img/cwlsinfondo.png</pixmap>
+       <pixmap resource="resource.qrc">:/img/img/unknown500.jpg</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
       </property>
      </widget>
     </item>
-    <item row="8" column="8" rowspan="2">
-     <widget class="QPushButton" name="pushButton_9">
+    <item row="4" column="8">
+     <widget class="QPushButton" name="pushButton_5">
       <property name="text">
-       <string>+1</string>
+       <string>-1</string>
       </property>
      </widget>
     </item>
-    <item row="10" column="4">
-     <widget class="QLineEdit" name="lineEdit_2">
+    <item row="0" column="3" colspan="5">
+     <widget class="QLabel" name="label_3">
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
       <property name="text">
-       <string>08</string>
+       <string>Qscoreboard</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>
-    <item row="1" column="8" rowspan="2">
-     <widget class="QPushButton" name="pushButton_3">
+    <item row="10" column="0">
+     <widget class="QPushButton" name="pushButton_8">
       <property name="text">
-       <string>+1</string>
+       <string>-1</string>
       </property>
      </widget>
-    </item>
-    <item row="7" column="2" rowspan="2" colspan="6">
-     <widget class="DigitalClock" name="widget" native="true"/>
     </item>
     <item row="8" column="1" rowspan="3">
      <widget class="QSplitter" name="splitter_5">
@@ -201,49 +158,41 @@
       </widget>
      </widget>
     </item>
-    <item row="1" column="1" rowspan="5">
-     <widget class="QLCDNumber" name="lcdNumber"/>
-    </item>
-    <item row="2" column="2" rowspan="2">
-     <widget class="QPushButton" name="pushButton_11">
+    <item row="1" column="9" rowspan="2">
+     <widget class="QPushButton" name="pushButton_3">
       <property name="text">
-       <string>Start/Stop</string>
+       <string>+1</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="9" rowspan="5">
-     <widget class="QLCDNumber" name="lcdNumber_2"/>
-    </item>
-    <item row="3" column="8" rowspan="2">
+    <item row="3" column="9" rowspan="2">
      <widget class="QPushButton" name="pushButton_4">
       <property name="text">
        <string>-1</string>
       </property>
      </widget>
     </item>
-    <item row="10" column="0">
-     <widget class="QPushButton" name="pushButton_8">
+    <item row="7" column="2" rowspan="2" colspan="7">
+     <widget class="DigitalClock" name="main_clock_widget" native="true"/>
+    </item>
+    <item row="8" column="9" rowspan="2">
+     <widget class="QPushButton" name="pushButton_9">
       <property name="text">
-       <string>-1</string>
+       <string>+1</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="8" colspan="2">
-     <widget class="QLabel" name="label_2">
-      <property name="font">
-       <font>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
+    <item row="1" column="3" colspan="2">
+     <widget class="QLabel" name="label_4">
       <property name="text">
-       <string>Away</string>
+       <string>Shot Clock</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>
-    <item row="8" column="9" rowspan="3">
+    <item row="8" column="10" rowspan="3">
      <widget class="QSplitter" name="splitter_6">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -263,8 +212,71 @@
       </widget>
      </widget>
     </item>
-    <item row="6" column="8" rowspan="2" colspan="2">
-     <widget class="QLabel" name="label_12">
+    <item row="12" column="4">
+     <widget class="QPushButton" name="pushButton_15">
+      <property name="text">
+       <string>Sound</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="3" rowspan="3" colspan="2">
+     <widget class="QLCDNumber" name="lcdNumber_3">
+      <property name="intValue" stdset="0">
+       <number>30</number>
+      </property>
+     </widget>
+    </item>
+    <item row="11" column="7">
+     <widget class="QPushButton" name="pushButton_13">
+      <property name="text">
+       <string>Reset</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0" rowspan="2">
+     <widget class="QPushButton" name="pushButton_7">
+      <property name="text">
+       <string>+1</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1" rowspan="5">
+     <widget class="QLCDNumber" name="lcdNumber"/>
+    </item>
+    <item row="2" column="2" rowspan="2">
+     <widget class="QPushButton" name="pushButton_11">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Start/Stop</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="9" colspan="2">
+     <widget class="QLabel" name="label_2">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Away</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="10" column="9">
+     <widget class="QPushButton" name="pushButton_10">
+      <property name="text">
+       <string>-1</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0" rowspan="2" colspan="2">
+     <widget class="QLabel" name="label_11">
       <property name="maximumSize">
        <size>
         <width>500</width>
@@ -275,17 +287,22 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="resource.qrc">:/img/img/cwlsinfondo.png</pixmap>
+       <pixmap resource="resource.qrc">:/img/img/cwl500.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
       </property>
      </widget>
     </item>
-    <item row="10" column="6">
-     <widget class="QLineEdit" name="lineEdit_3">
+    <item row="6" column="6">
+     <widget class="QLabel" name="label_6">
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
       <property name="text">
-       <string>00</string>
+       <string>Main Clock</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -299,7 +316,7 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="6" rowspan="3">
+    <item row="1" column="7" rowspan="3">
      <widget class="QSplitter" name="splitter_3">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -319,13 +336,6 @@
       </widget>
      </widget>
     </item>
-    <item row="8" column="0" rowspan="2">
-     <widget class="QPushButton" name="pushButton_7">
-      <property name="text">
-       <string>+1</string>
-      </property>
-     </widget>
-    </item>
     <item row="3" column="0" rowspan="2">
      <widget class="QPushButton" name="pushButton_2">
       <property name="text">
@@ -333,24 +343,21 @@
       </property>
      </widget>
     </item>
-    <item row="12" column="5">
-     <widget class="QPushButton" name="pushButton_15">
+    <item row="12" column="7">
+     <widget class="QPushButton" name="pushButton_17">
       <property name="text">
-       <string>Sound</string>
+       <string>Add Screen 30</string>
+      </property>
+     </widget>
+    </item>
+    <item row="12" column="6">
+     <widget class="QPushButton" name="pushButton_16">
+      <property name="text">
+       <string>Add Screen</string>
       </property>
      </widget>
     </item>
    </layout>
-  </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1502</width>
-     <height>26</height>
-    </rect>
-   </property>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -361,6 +368,27 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1502</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuMain_Clock">
+    <property name="title">
+     <string>Main Clock</string>
+    </property>
+   </widget>
+   <addaction name="menuMain_Clock"/>
+  </widget>
+  <action name="actionConfig">
+   <property name="text">
+    <string>Config</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>

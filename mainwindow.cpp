@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QtMultimedia/QMediaPlayer>
+#include "scoredisplay.h"
+#include "timeoffdisplay.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -11,13 +13,14 @@ MainWindow::MainWindow(QWidget *parent) :
     home_timeoff=1;
     away_timeoff=1;
     period=1;
-    time_running = false;
+    set_time_running(false);
+    allow_negative = false;
 
 
-    //shot_clock = ui->lineEdit->text().toInt();
     connect(timer, SIGNAL(timeout()), this, SLOT(update()));
     ui->setupUi(this);
     set_shot_clock(ui->lineEdit->text().toInt());
+
 
 }
 
@@ -34,7 +37,10 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    add_home_goals(-1);
+    if(get_home_goals()>0 || allow_negative==true){
+            add_home_goals(-1);
+    }
+
     ui->lcdNumber->display(get_home_goals());
 }
 
@@ -46,8 +52,10 @@ void MainWindow::on_pushButton_3_clicked()
 
 void MainWindow::on_pushButton_4_clicked()
 {
+    if(get_away_goals()>0 || allow_negative==true){
     add_away_goals(-1);
-    ui->lcdNumber_2->display(get_away_goals());
+    }
+        ui->lcdNumber_2->display(get_away_goals());
 }
 
 void MainWindow::on_pushButton_7_clicked()
@@ -58,19 +66,27 @@ void MainWindow::on_pushButton_7_clicked()
 
 void MainWindow::on_pushButton_8_clicked()
 {
-    add_home_timeoff(-1);
+    if(get_home_timeoff()>0 || allow_negative==true){
+        add_home_timeoff(-1);
+    }
     ui->lcdNumber_6->display(get_home_timeoff());
 }
 
 void MainWindow::on_pushButton_9_clicked()
 {
+
     add_away_timeoff(+1);
+
+
     ui->lcdNumber_7->display(get_away_timeoff());
 }
 
 void MainWindow::on_pushButton_10_clicked()
 {
-    add_away_timeoff(-1);
+    if(get_away_timeoff()>0 || allow_negative==true){
+            add_away_timeoff(-1);
+    }
+
     ui->lcdNumber_7->display(get_away_timeoff());
 }
 
@@ -86,7 +102,10 @@ void MainWindow::on_pushButton_6_clicked()
 
 void MainWindow::on_pushButton_5_clicked()
 {
-    add_period(-1);
+    if(get_period()>0 || allow_negative == true){
+        add_period(-1);
+    }
+
     ui->lcdNumber_4->display(get_period());
 }
 
@@ -107,7 +126,20 @@ void MainWindow::on_pushButton_11_clicked()
 
 void MainWindow::update()
 {
-    add_shot_clock(-1);
+
+    if(ui->main_clock_widget->is_playing()){
+        ui->pushButton_11->setEnabled(true);
+        if(get_shot_clock()>0 || allow_negative==true){
+                add_shot_clock(-1);
+                if(get_shot_clock()==0 ){
+                        QSound::play(":/sound/sound/airhorn.wav");
+                }
+        }
+    }
+
+
+
+
     ui->lcdNumber_3->display(get_shot_clock());
 }
 
@@ -124,5 +156,43 @@ void MainWindow::on_pushButton_15_clicked()
 
 void MainWindow::on_pushButton_14_clicked()
 {
+    //Main clock
+    ui->main_clock_widget->start_stop();
+    ui->pushButton_11->setEnabled(false);
 
+
+
+    //Timeoff clock is synchronized with main clock
+    //If it is stopped, start. If it is running stop it.
+    if(get_time_running())
+    {
+        timer->stop();
+        set_time_running(false);
+
+    }
+    else {
+        timer->start(1000);
+        set_time_running(true);
+
+    }
+
+}
+
+void MainWindow::on_pushButton_13_clicked()
+{
+    ui->main_clock_widget->set_minutes(ui->lineEdit_2->text().toInt());
+    ui->main_clock_widget->set_seconds(ui->lineEdit_3->text().toInt());
+    ui->main_clock_widget->showTime();
+}
+
+void MainWindow::on_pushButton_16_clicked()
+{
+    ScoreDisplay *s = new ScoreDisplay();
+    s->show();
+}
+
+void MainWindow::on_pushButton_17_clicked()
+{
+    TimeOffDisplay *t = new TimeOffDisplay();
+    t->show();
 }

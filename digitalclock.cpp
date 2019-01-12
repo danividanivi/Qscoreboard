@@ -58,14 +58,13 @@ DigitalClock::DigitalClock(QWidget *parent)
     : QLCDNumber(parent)
 {
     setSegmentStyle(Filled);
-
-
+    set_playing(false);
     timer = new QTimer(this);
     this->set_minutes(8);
     this->set_seconds(0);
     time = QTime(0,this->get_minutes(),this->get_seconds());
-    connect(timer, &QTimer::timeout, this, &DigitalClock::showTime);
-    timer->start(1000);
+    connect(timer, &QTimer::timeout, this, &DigitalClock::tickTime);
+    //timer->start(1000);
 
 
     showTime();
@@ -74,26 +73,54 @@ DigitalClock::DigitalClock(QWidget *parent)
     resize(150, 60);
 }
 
-void DigitalClock::showTime()
+void DigitalClock::tickTime()
 {
     //QTime time = QTime::currentTime();
+    if(time>QTime(0,0,0)){
+            time = time.addSecs(-1);
+
+            if(time==QTime(0,0,0)){
+                QSound::play(":/sound/sound/Buzzer.wav");
+
+                set_playing(false);
+            }
+    }
+
 
     QString text = time.toString("mm:ss");
     if ((time.second() % 2) == 0)
         text[2] = ' ';
     display(text);
-    time = time.addSecs(-1);
+
+
+
 }
+
+void DigitalClock::showTime()
+{
+    //QTime time = QTime::currentTime();
+
+
+    QString text = time.toString("mm:ss");
+    if ((time.second() % 2) == 0)
+        text[2] = ' ';
+    display(text);
+
+
+}
+
 
 void DigitalClock::start_stop()
 {
     if(is_playing())
     {
         timer->stop();
+        set_playing(false);
     }
     else
     {
         timer->start(1000);
+        set_playing(true);
     }
 
 }

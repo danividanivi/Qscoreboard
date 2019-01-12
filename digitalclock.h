@@ -56,6 +56,7 @@
 #include <QLCDNumber>
 #include <QTimer>
 #include <QTime>
+#include <QSound>
 
 class DigitalClock : public QLCDNumber
 {
@@ -64,17 +65,20 @@ class DigitalClock : public QLCDNumber
 public:
     DigitalClock(QWidget *parent = 0);
     int get_seconds(){return seconds;}
-    void set_seconds(int s){seconds = s;}
+    void set_seconds(int s){seconds = s;     time = QTime(0,this->get_minutes(),this->get_seconds());}
     int get_minutes(){return minutes;}
-    void set_minutes(int m){minutes = m;}
+    void set_minutes(int m){minutes = m;    time = QTime(0,this->get_minutes(),this->get_seconds());}
     bool is_playing(){return playing;}
+    void set_playing(bool play){playing = play;}
     QTimer *timer;
 
 public slots:
     void start_stop();
+    void tickTime();
+    void showTime();
 
 private slots:
-    void showTime();
+
 
 
 private:
@@ -82,7 +86,7 @@ private:
     int seconds;
     QTime time;
 
-    bool playing = true;
+    bool playing;
 };
 
 #endif

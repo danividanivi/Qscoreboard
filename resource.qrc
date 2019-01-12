@@ -2,8 +2,12 @@
     <qresource prefix="/img">
         <file>img/cwlsinfondo.png</file>
         <file>img/Muralla_-_IM000805.jpg</file>
+        <file>img/unknownlogo.gif</file>
+        <file>img/cwl500.png</file>
+        <file>img/unknown500.jpg</file>
     </qresource>
     <qresource prefix="/sound">
         <file>sound/airhorn.wav</file>
+        <file>sound/Buzzer.wav</file>
     </qresource>
 </RCC>

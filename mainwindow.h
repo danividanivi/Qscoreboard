@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QTimer>
 #include <QtMultimedia/QSound>
+#include "scoredisplay.h"
 
 namespace Ui {
 class MainWindow;
@@ -38,6 +39,9 @@ public:
     void set_shot_clock(int time){shot_clock = time;}
     int get_shot_clock(){return shot_clock;}
 
+    void set_time_running(bool run){time_running = run;}
+    bool get_time_running(){return time_running;}
+
 private slots:
     void on_pushButton_clicked();
 
@@ -69,6 +73,12 @@ private slots:
 
     void on_pushButton_14_clicked();
 
+    void on_pushButton_13_clicked();
+
+    void on_pushButton_16_clicked();
+
+    void on_pushButton_17_clicked();
+
 private:
     Ui::MainWindow *ui;
     int home_goals;
@@ -78,6 +88,7 @@ private:
     int period;
 
     bool time_running;
+    bool allow_negative;
 
     QTimer *timer = new QTimer(this);
     int shot_clock;
