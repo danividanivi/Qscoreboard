@@ -158,7 +158,7 @@ void MainWindow::on_pushButton_14_clicked()
 {
     //Main clock
     ui->main_clock_widget->start_stop();
-    ui->pushButton_11->setEnabled(false);
+    ui->pushButton_11->setEnabled(true);
 
 
 
@@ -195,4 +195,28 @@ void MainWindow::on_pushButton_17_clicked()
 {
     TimeOffDisplay *t = new TimeOffDisplay();
     t->show();
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event){
+    switch(event->key())
+        {
+        case Qt::UpArrow:
+            emit on_pushButton_11_clicked();
+            break;
+        case Qt::DownArrow:
+            emit on_pushButton_11_clicked();
+            break;
+        case Qt::LeftArrow:
+            emit on_pushButton_13_clicked();
+            break;
+        case Qt::RightArrow:
+            emit on_pushButton_14_clicked();
+            break;
+        default:
+                emit on_pushButton_13_clicked();
+                //event->ignore();
+                break;
+
+        }
+
 }

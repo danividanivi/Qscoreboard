@@ -5,6 +5,7 @@
 #include <QTimer>
 #include <QtMultimedia/QSound>
 #include "scoredisplay.h"
+#include <QKeyEvent>
 
 namespace Ui {
 class MainWindow;
@@ -42,6 +43,9 @@ public:
     void set_time_running(bool run){time_running = run;}
     bool get_time_running(){return time_running;}
 
+protected:
+    void keyPressEvent(QKeyEvent *);
+
 private slots:
     void on_pushButton_clicked();
 
@@ -78,6 +82,8 @@ private slots:
     void on_pushButton_16_clicked();
 
     void on_pushButton_17_clicked();
+
+
 
 private:
     Ui::MainWindow *ui;

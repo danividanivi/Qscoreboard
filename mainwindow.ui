@@ -368,22 +368,6 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1502</width>
-     <height>26</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuMain_Clock">
-    <property name="title">
-     <string>Main Clock</string>
-    </property>
-   </widget>
-   <addaction name="menuMain_Clock"/>
-  </widget>
   <action name="actionConfig">
    <property name="text">
     <string>Config</string>
