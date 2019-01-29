@@ -6,6 +6,8 @@
 #include <QtMultimedia/QSound>
 #include "scoredisplay.h"
 #include <QKeyEvent>
+#include <QDebug>
+#include "timeoffdisplay.h"
 
 namespace Ui {
 class MainWindow;
@@ -43,6 +45,7 @@ public:
     void set_time_running(bool run){time_running = run;}
     bool get_time_running(){return time_running;}
 
+signals:
 protected:
     void keyPressEvent(QKeyEvent *);
 
@@ -98,6 +101,12 @@ private:
 
     QTimer *timer = new QTimer(this);
     int shot_clock;
+
+    ScoreDisplay *s;
+    bool secondScreen;
+
+    TimeOffDisplay *t;
+    bool timeoffScreen;
 
 };
 

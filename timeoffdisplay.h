@@ -15,6 +15,9 @@ public:
     explicit TimeOffDisplay(QWidget *parent = nullptr);
     ~TimeOffDisplay();
 
+public slots:
+    void updateDisplay(int seconds);
+
 private:
     Ui::TimeOffDisplay *ui;
 };

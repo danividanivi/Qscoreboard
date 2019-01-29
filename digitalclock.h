@@ -72,6 +72,9 @@ public:
     void set_playing(bool play){playing = play;}
     QTimer *timer;
 
+    QTime getTime() const;
+    void setTime(const QTime &value);
+
 public slots:
     void start_stop();
     void tickTime();

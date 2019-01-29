@@ -15,6 +15,9 @@ MainWindow::MainWindow(QWidget *parent) :
     period=1;
     set_time_running(false);
     allow_negative = false;
+    secondScreen = false;
+    timeoffScreen = false;
+
 
 
     connect(timer, SIGNAL(timeout()), this, SLOT(update()));
@@ -33,6 +36,7 @@ void MainWindow::on_pushButton_clicked()
 {
     add_home_goals(+1);
     ui->lcdNumber->display(get_home_goals());
+
 }
 
 void MainWindow::on_pushButton_2_clicked()
@@ -42,12 +46,15 @@ void MainWindow::on_pushButton_2_clicked()
     }
 
     ui->lcdNumber->display(get_home_goals());
+
+
 }
 
 void MainWindow::on_pushButton_3_clicked()
 {
     add_away_goals(+1);
     ui->lcdNumber_2->display(get_away_goals());
+
 }
 
 void MainWindow::on_pushButton_4_clicked()
@@ -56,6 +63,7 @@ void MainWindow::on_pushButton_4_clicked()
     add_away_goals(-1);
     }
         ui->lcdNumber_2->display(get_away_goals());
+
 }
 
 void MainWindow::on_pushButton_7_clicked()
@@ -141,6 +149,18 @@ void MainWindow::update()
 
 
     ui->lcdNumber_3->display(get_shot_clock());
+    if(secondScreen==true){
+        s->updateDisplay(get_home_goals(),get_away_goals(),get_shot_clock(), get_period(), this->ui->main_clock_widget->getTime());
+//        qDebug() << "minutes" << this->ui->main_clock_widget->get_minutes();
+//        qDebug() << "seconds" << this->ui->main_clock_widget->get_seconds();
+
+    }
+    if(timeoffScreen==true){
+        t->updateDisplay(get_shot_clock());
+        qDebug() << "sec" << get_shot_clock();
+
+
+    }
 }
 
 void MainWindow::on_pushButton_12_clicked()
@@ -187,13 +207,15 @@ void MainWindow::on_pushButton_13_clicked()
 
 void MainWindow::on_pushButton_16_clicked()
 {
-    ScoreDisplay *s = new ScoreDisplay();
+    s = new ScoreDisplay();
+    secondScreen = true;
     s->show();
 }
 
 void MainWindow::on_pushButton_17_clicked()
 {
-    TimeOffDisplay *t = new TimeOffDisplay();
+    t = new TimeOffDisplay();
+    timeoffScreen = true;
     t->show();
 }
 

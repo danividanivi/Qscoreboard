@@ -12,3 +12,8 @@ TimeOffDisplay::~TimeOffDisplay()
 {
     delete ui;
 }
+
+void TimeOffDisplay::updateDisplay(int seconds){
+    this->ui->lcdNumber->display(seconds);
+
+}

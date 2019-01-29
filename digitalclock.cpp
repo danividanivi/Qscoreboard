@@ -109,6 +109,16 @@ void DigitalClock::showTime()
 
 }
 
+QTime DigitalClock::getTime() const
+{
+    return time;
+}
+
+void DigitalClock::setTime(const QTime &value)
+{
+    time = value;
+}
+
 
 void DigitalClock::start_stop()
 {

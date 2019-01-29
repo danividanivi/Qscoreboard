@@ -2,6 +2,7 @@
 #define SCOREDISPLAY_H
 
 #include <QWidget>
+#include <QTime>
 
 namespace Ui {
 class ScoreDisplay;
@@ -16,7 +17,9 @@ public:
     ~ScoreDisplay();
 
 public slots:
-    void updateDisplay(int home, int away);
+    void updateDisplay(int home, int away, int shot_clock, int period, QTime time);
+    void random();
+
 
 private:
     Ui::ScoreDisplay *ui;
