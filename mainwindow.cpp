@@ -6,7 +6,8 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    timeOffSound(":/sound/sound/airhorn.wav")
 {
     home_goals=0;
     away_goals=0;
@@ -20,9 +21,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
 
+
+    //update secondary sreens (if they exist) every 1 millisecond
+    timerScreens->start(1);
+
     connect(timer, SIGNAL(timeout()), this, SLOT(update()));
     ui->setupUi(this);
     set_shot_clock(ui->lineEdit->text().toInt());
+    connect(timerScreens, SIGNAL(timeout()), this, SLOT(updateScreens()));
 
 
 }
@@ -130,6 +136,8 @@ void MainWindow::on_pushButton_11_clicked()
         time_running=true;
 
     }
+
+
 }
 
 void MainWindow::update()
@@ -140,7 +148,7 @@ void MainWindow::update()
         if(get_shot_clock()>0 || allow_negative==true){
                 add_shot_clock(-1);
                 if(get_shot_clock()==0 ){
-                        QSound::play(":/sound/sound/airhorn.wav");
+                    timeOffSound.play();
                 }
         }
     }
@@ -149,18 +157,7 @@ void MainWindow::update()
 
 
     ui->lcdNumber_3->display(get_shot_clock());
-    if(secondScreen==true){
-        s->updateDisplay(get_home_goals(),get_away_goals(),get_shot_clock(), get_period(), this->ui->main_clock_widget->getTime());
-//        qDebug() << "minutes" << this->ui->main_clock_widget->get_minutes();
-//        qDebug() << "seconds" << this->ui->main_clock_widget->get_seconds();
 
-    }
-    if(timeoffScreen==true){
-        t->updateDisplay(get_shot_clock());
-        qDebug() << "sec" << get_shot_clock();
-
-
-    }
 }
 
 void MainWindow::on_pushButton_12_clicked()
@@ -171,7 +168,7 @@ void MainWindow::on_pushButton_12_clicked()
 
 void MainWindow::on_pushButton_15_clicked()
 {
-    QSound::play(":/sound/sound/airhorn.wav");
+    timeOffSound.play();
 }
 
 void MainWindow::on_pushButton_14_clicked()
@@ -207,9 +204,12 @@ void MainWindow::on_pushButton_13_clicked()
 
 void MainWindow::on_pushButton_16_clicked()
 {
-    s = new ScoreDisplay();
     secondScreen = true;
-    s->show();
+    QRect screenres = QApplication::desktop()->screenGeometry(1/*screenNumber*/);
+    s = new ScoreDisplay();
+    s->move(QPoint(screenres.x(), screenres.y()));
+    s->resize(screenres.width(), screenres.height());
+    s->showFullScreen();
 }
 
 void MainWindow::on_pushButton_17_clicked()
@@ -220,25 +220,42 @@ void MainWindow::on_pushButton_17_clicked()
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event){
-    switch(event->key())
-        {
-        case Qt::UpArrow:
-            emit on_pushButton_11_clicked();
-            break;
-        case Qt::DownArrow:
-            emit on_pushButton_11_clicked();
-            break;
-        case Qt::LeftArrow:
-            emit on_pushButton_13_clicked();
-            break;
-        case Qt::RightArrow:
-            emit on_pushButton_14_clicked();
-            break;
-        default:
-                emit on_pushButton_13_clicked();
-                //event->ignore();
-                break;
+    if(event->key() == Qt::Key_Escape)
+    {
+        //Start Stop button
+        emit on_pushButton_14_clicked();
+    }
 
-        }
+    if(event->key() == Qt::Key_R)
+    {
+        //Reset button
+        emit on_pushButton_13_clicked();
+    }
 
+    if(event->key() == Qt::Key_PageUp)
+    {
+        //Start/Stop Timeoff button
+        emit on_pushButton_11_clicked();
+    }
+
+    if(event->key() == Qt::Key_PageDown)
+    {
+        //Reset button TimeOff
+        emit on_pushButton_12_clicked();
+    }
+
+
+
+}
+
+void MainWindow::updateScreens(){
+    if(secondScreen==true){
+        s->updateDisplay(get_home_goals(),get_away_goals(),get_shot_clock(), get_period(), this->ui->main_clock_widget->getTime());
+
+    }
+    if(timeoffScreen==true){
+        t->updateDisplay(get_shot_clock());
+        qDebug() << "sec" << get_shot_clock();
+
+    }
 }

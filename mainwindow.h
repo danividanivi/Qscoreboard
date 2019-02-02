@@ -8,6 +8,7 @@
 #include <QKeyEvent>
 #include <QDebug>
 #include "timeoffdisplay.h"
+#include <QDesktopWidget>
 
 namespace Ui {
 class MainWindow;
@@ -45,9 +46,10 @@ public:
     void set_time_running(bool run){time_running = run;}
     bool get_time_running(){return time_running;}
 
-signals:
 protected:
     void keyPressEvent(QKeyEvent *);
+
+signals:
 
 private slots:
     void on_pushButton_clicked();
@@ -73,6 +75,8 @@ private slots:
     void on_pushButton_11_clicked();
 
     void update();
+    void updateScreens();
+
 
     void on_pushButton_12_clicked();
 
@@ -100,6 +104,7 @@ private:
     bool allow_negative;
 
     QTimer *timer = new QTimer(this);
+    QTimer *timerScreens = new QTimer(this);
     int shot_clock;
 
     ScoreDisplay *s;
@@ -107,6 +112,8 @@ private:
 
     TimeOffDisplay *t;
     bool timeoffScreen;
+
+    QSound timeOffSound;
 
 };
 

@@ -5,6 +5,7 @@
         <file>img/unknownlogo.gif</file>
         <file>img/cwl500.png</file>
         <file>img/unknown500.jpg</file>
+        <file>img/cws500.png</file>
     </qresource>
     <qresource prefix="/sound">
         <file>sound/airhorn.wav</file>

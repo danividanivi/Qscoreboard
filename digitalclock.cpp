@@ -55,7 +55,7 @@
 #include "digitalclock.h"
 
 DigitalClock::DigitalClock(QWidget *parent)
-    : QLCDNumber(parent)
+    : QLCDNumber(parent), endSound(":/sound/sound/Buzzer.wav")
 {
     setSegmentStyle(Filled);
     set_playing(false);
@@ -80,9 +80,8 @@ void DigitalClock::tickTime()
             time = time.addSecs(-1);
 
             if(time==QTime(0,0,0)){
-                QSound::play(":/sound/sound/Buzzer.wav");
-
                 set_playing(false);
+                endSound.play();
             }
     }
 

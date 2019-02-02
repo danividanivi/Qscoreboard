@@ -90,6 +90,8 @@ private:
     QTime time;
 
     bool playing;
+    QSound endSound;
+
 };
 
 #endif
