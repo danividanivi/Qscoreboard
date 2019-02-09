@@ -16,7 +16,7 @@ public:
     ~TimeOffDisplay();
 
 public slots:
-    void updateDisplay(int seconds);
+    void updateDisplay(int seconds, bool hide);
 
 private:
     Ui::TimeOffDisplay *ui;

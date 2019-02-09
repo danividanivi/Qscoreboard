@@ -17,7 +17,9 @@ MainWindow::MainWindow(QWidget *parent) :
     set_time_running(false);
     allow_negative = false;
     secondScreen = false;
+    thirdScreen = false;
     timeoffScreen = false;
+    timeoffHidden = false;
 
 
 
@@ -207,16 +209,27 @@ void MainWindow::on_pushButton_16_clicked()
     secondScreen = true;
     QRect screenres = QApplication::desktop()->screenGeometry(1/*screenNumber*/);
     s = new ScoreDisplay();
+    s->setAttribute(Qt::WA_ShowWithoutActivating);
+    s->setWindowFlags(Qt::Tool | Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint);
     s->move(QPoint(screenres.x(), screenres.y()));
     s->resize(screenres.width(), screenres.height());
+    s->setWindowFlags(Qt::Tool);
     s->showFullScreen();
 }
 
 void MainWindow::on_pushButton_17_clicked()
 {
-    t = new TimeOffDisplay();
+
+    thirdScreen = true;
     timeoffScreen = true;
-    t->show();
+    QRect screenres = QApplication::desktop()->screenGeometry(2/*screenNumber*/);
+    t = new TimeOffDisplay();
+    t->setAttribute(Qt::WA_ShowWithoutActivating);
+    t->setWindowFlags(Qt::Tool | Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint);
+    t->move(QPoint(screenres.x(), screenres.y()));
+    t->resize(screenres.width(), screenres.height());
+
+    t->showFullScreen();
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event){
@@ -244,6 +257,12 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
         emit on_pushButton_12_clicked();
     }
 
+    if(event->key() == Qt::Key_Alt)
+    {
+        //Hide timeoff
+        emit hideTimeOff();
+    }
+
 
 
 }
@@ -254,8 +273,21 @@ void MainWindow::updateScreens(){
 
     }
     if(timeoffScreen==true){
-        t->updateDisplay(get_shot_clock());
-        qDebug() << "sec" << get_shot_clock();
+        t->updateDisplay(get_shot_clock(), timeoffHidden);
+//        qDebug() << "sec" << get_shot_clock();
 
     }
+}
+
+void MainWindow::hideTimeOff(){
+    if(this->ui->lcdNumber_3->isVisible()){
+        this->ui->lcdNumber_3->hide();
+        timeoffHidden = true;
+
+    }
+    else {
+        this->ui->lcdNumber_3->show();
+        timeoffHidden = false;
+    }
+
 }

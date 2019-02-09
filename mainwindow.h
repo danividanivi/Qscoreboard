@@ -90,6 +90,8 @@ private slots:
 
     void on_pushButton_17_clicked();
 
+    void hideTimeOff();
+
 
 
 private:
@@ -112,6 +114,8 @@ private:
 
     TimeOffDisplay *t;
     bool timeoffScreen;
+    bool timeoffHidden;
+    bool thirdScreen;
 
     QSound timeOffSound;
 
