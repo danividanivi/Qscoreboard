@@ -614,7 +614,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="resource.qrc">:/img/img/cws500.png</pixmap>
+      <pixmap resource="resource.qrc">:/img/img/pontevedra500.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
@@ -644,7 +644,7 @@
       </font>
      </property>
      <property name="text">
-      <string>CWS</string>
+      <string>CWP</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
