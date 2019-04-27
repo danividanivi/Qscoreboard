@@ -8,6 +8,8 @@
         <file>img/cws500.png</file>
         <file>img/rcnv500.png</file>
         <file>img/pontevedra500.png</file>
+        <file>img/cnc.jpg</file>
+        <file>img/cnc500.png</file>
     </qresource>
     <qresource prefix="/sound">
         <file>sound/airhorn.wav</file>
