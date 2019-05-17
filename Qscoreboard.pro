@@ -27,6 +27,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    clickablelabel.cpp \
         main.cpp \
         mainwindow.cpp \
     digitalclock.cpp \
@@ -34,6 +35,7 @@ SOURCES += \
     timeoffdisplay.cpp
 
 HEADERS += \
+    clickablelabel.h \
         mainwindow.h \
     digitalclock.h \
     scoredisplay.h \

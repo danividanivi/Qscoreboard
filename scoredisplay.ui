@@ -493,18 +493,29 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="3" colspan="2">
-    <widget class="QLabel" name="label_2">
-     <property name="font">
-      <font>
-       <pointsize>18</pointsize>
-      </font>
+   <item row="0" column="0" rowspan="3" colspan="2">
+    <widget class="QLCDNumber" name="lcdNumber">
+     <property name="digitCount">
+      <number>2</number>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="7">
+    <widget class="QLabel" name="label_12">
+     <property name="maximumSize">
+      <size>
+       <width>200</width>
+       <height>200</height>
+      </size>
      </property>
      <property name="text">
-      <string>TIME OFF</string>
+      <string/>
      </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
+     <property name="pixmap">
+      <pixmap resource="resource.qrc">:/img/img/cwl500.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
@@ -523,13 +534,6 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="0" rowspan="3" colspan="2">
-    <widget class="QLCDNumber" name="lcdNumber">
-     <property name="digitCount">
-      <number>2</number>
-     </property>
-    </widget>
-   </item>
    <item row="1" column="3" rowspan="2" colspan="2">
     <widget class="QLCDNumber" name="lcdNumber_3">
      <property name="smallDecimalPoint">
@@ -542,16 +546,6 @@
       <number>30</number>
      </property>
     </widget>
-   </item>
-   <item row="0" column="6" rowspan="3" colspan="2">
-    <widget class="QLCDNumber" name="lcdNumber_2">
-     <property name="digitCount">
-      <number>2</number>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1" rowspan="3" colspan="6">
-    <widget class="DigitalClock" name="main_clock_widget" native="true"/>
    </item>
    <item row="5" column="0">
     <widget class="QLabel" name="label_4">
@@ -576,7 +570,22 @@
       </font>
      </property>
      <property name="text">
-      <string>VISITOR</string>
+      <string>AWAY</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="3" colspan="2">
+    <widget class="QLabel" name="label_2">
+     <property name="font">
+      <font>
+       <pointsize>18</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>TIME OFF</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -602,52 +611,70 @@
      </property>
     </widget>
    </item>
-   <item row="6" column="7">
-    <widget class="QLabel" name="label_12">
+   <item row="0" column="6" rowspan="3" colspan="2">
+    <widget class="QLCDNumber" name="lcdNumber_2">
+     <property name="digitCount">
+      <number>2</number>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1" rowspan="3" colspan="6">
+    <widget class="DigitalClock" name="main_clock_widget" native="true"/>
+   </item>
+   <item row="7" column="7">
+    <widget class="QLabel" name="label_6">
      <property name="maximumSize">
       <size>
-       <width>200</width>
-       <height>200</height>
+       <width>500</width>
+       <height>500</height>
       </size>
      </property>
-     <property name="text">
-      <string/>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+      </font>
      </property>
-     <property name="pixmap">
-      <pixmap resource="resource.qrc">:/img/img/cnc500.png</pixmap>
+     <property name="inputMethodHints">
+      <set>Qt::ImhNone</set>
+     </property>
+     <property name="text">
+      <string>Thanks to @waterpololugo</string>
      </property>
      <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="wordWrap">
       <bool>true</bool>
      </property>
     </widget>
    </item>
    <item row="7" column="0">
     <widget class="QLabel" name="label_5">
+     <property name="maximumSize">
+      <size>
+       <width>500</width>
+       <height>500</height>
+      </size>
+     </property>
      <property name="font">
       <font>
        <pointsize>20</pointsize>
       </font>
      </property>
      <property name="text">
-      <string>CWL</string>
+      <string>Qscoreboard ©Daniel Viaño</string>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
-    </widget>
-   </item>
-   <item row="7" column="7">
-    <widget class="QLabel" name="label_6">
-     <property name="font">
-      <font>
-       <pointsize>20</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>CWP</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
+     <property name="wordWrap">
+      <bool>true</bool>
      </property>
     </widget>
    </item>

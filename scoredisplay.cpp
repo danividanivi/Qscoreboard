@@ -34,3 +34,21 @@ void ScoreDisplay::random(){
     this->ui->lcdNumber->display(288);
     this->ui->lcdNumber_2->display(288);
 }
+
+void ScoreDisplay::changeHomePicture(QString fileName)
+{
+
+    if (!fileName.isEmpty()){
+        ui->label_11->setPixmap(fileName);
+    }
+
+}
+
+void ScoreDisplay::changeAwayPicture(QString fileName)
+{
+
+    if (!fileName.isEmpty()){
+        ui->label_12->setPixmap(fileName);
+    }
+
+}

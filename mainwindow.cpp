@@ -21,6 +21,11 @@ MainWindow::MainWindow(QWidget *parent) :
     timeoffScreen = false;
     timeoffHidden = false;
 
+    homeFilename = ":/img/img/cwl500.png";
+    awayFilename = ":/img/img/cwl500.png";
+
+
+
 
 
 
@@ -31,6 +36,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     set_shot_clock(ui->lineEdit->text().toInt());
     connect(timerScreens, SIGNAL(timeout()), this, SLOT(updateScreens()));
+
+    connect(ui->label_11, SIGNAL(clicked()), this, SLOT(changeHomePicture()));
+    connect(ui->label_12, SIGNAL(clicked()), this, SLOT(changeAwayPicture()));
+
+
+
 
 
 }
@@ -215,6 +226,13 @@ void MainWindow::on_pushButton_16_clicked()
     s->resize(screenres.width(), screenres.height());
     s->setWindowFlags(Qt::Tool);
     s->showFullScreen();
+    connect(this, SIGNAL(homePictureChanged(QString)), s, SLOT(changeHomePicture(QString)));
+    connect(this, SIGNAL(awayPictureChanged(QString)), s, SLOT(changeAwayPicture(QString)));
+    emit homePictureChanged(homeFilename);
+    emit awayPictureChanged(awayFilename);
+
+
+
 }
 
 void MainWindow::on_pushButton_17_clicked()
@@ -288,6 +306,34 @@ void MainWindow::hideTimeOff(){
     else {
         this->ui->lcdNumber_3->show();
         timeoffHidden = false;
+    }
+
+}
+
+void MainWindow::changeHomePicture()
+{
+    QString fileName = QFileDialog::getOpenFileName(this,
+        tr("Select Image"), "/home/cwl", tr("Image Files (*.png *.jpg *.bmp)"));
+
+    if (!fileName.isEmpty()){
+        homeFilename = fileName;
+        ui->label_11->setPixmap(homeFilename);
+        emit homePictureChanged(homeFilename);
+    }
+
+
+
+}
+
+void MainWindow::changeAwayPicture()
+{
+    QString fileName = QFileDialog::getOpenFileName(this,
+        tr("Select Image"), "/home/cwl", tr("Image Files (*.png *.jpg *.bmp)"));
+
+    if (!fileName.isEmpty()){
+        awayFilename = fileName;
+        ui->label_12->setPixmap(awayFilename);
+        emit awayPictureChanged(awayFilename);
     }
 
 }

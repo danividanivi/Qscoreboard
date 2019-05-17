@@ -9,6 +9,7 @@
 #include <QDebug>
 #include "timeoffdisplay.h"
 #include <QDesktopWidget>
+#include <QFileDialog>
 
 namespace Ui {
 class MainWindow;
@@ -46,10 +47,17 @@ public:
     void set_time_running(bool run){time_running = run;}
     bool get_time_running(){return time_running;}
 
+public slots:
+    void changeHomePicture();
+    void changeAwayPicture();
+
 protected:
     void keyPressEvent(QKeyEvent *);
 
 signals:
+    void homePictureChanged(QString);
+    void awayPictureChanged(QString);
+
 
 private slots:
     void on_pushButton_clicked();
@@ -118,6 +126,9 @@ private:
     bool thirdScreen;
 
     QSound timeOffSound;
+
+    QString homeFilename;
+    QString awayFilename;
 
 };
 
