@@ -313,7 +313,7 @@ void MainWindow::hideTimeOff(){
 void MainWindow::changeHomePicture()
 {
     QString fileName = QFileDialog::getOpenFileName(this,
-        tr("Select Image"), "/home/cwl", tr("Image Files (*.png *.jpg *.bmp)"));
+        tr("Select Image"), "img/", tr("Image Files (*.png *.jpg *.bmp)"));
 
     if (!fileName.isEmpty()){
         homeFilename = fileName;
@@ -328,7 +328,7 @@ void MainWindow::changeHomePicture()
 void MainWindow::changeAwayPicture()
 {
     QString fileName = QFileDialog::getOpenFileName(this,
-        tr("Select Image"), "/home/cwl", tr("Image Files (*.png *.jpg *.bmp)"));
+        tr("Select Image"), "img", tr("Image Files (*.png *.jpg *.bmp)"));
 
     if (!fileName.isEmpty()){
         awayFilename = fileName;

@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ScoreDisplay_t {
-    QByteArrayData data[9];
-    char stringdata0[68];
+    QByteArrayData data[12];
+    char stringdata0[113];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,11 +39,15 @@ QT_MOC_LITERAL(4, 33, 4), // "away"
 QT_MOC_LITERAL(5, 38, 10), // "shot_clock"
 QT_MOC_LITERAL(6, 49, 6), // "period"
 QT_MOC_LITERAL(7, 56, 4), // "time"
-QT_MOC_LITERAL(8, 61, 6) // "random"
+QT_MOC_LITERAL(8, 61, 6), // "random"
+QT_MOC_LITERAL(9, 68, 17), // "changeHomePicture"
+QT_MOC_LITERAL(10, 86, 8), // "fileName"
+QT_MOC_LITERAL(11, 95, 17) // "changeAwayPicture"
 
     },
     "ScoreDisplay\0updateDisplay\0\0home\0away\0"
-    "shot_clock\0period\0time\0random"
+    "shot_clock\0period\0time\0random\0"
+    "changeHomePicture\0fileName\0changeAwayPicture"
 };
 #undef QT_MOC_LITERAL
 
@@ -53,7 +57,7 @@ static const uint qt_meta_data_ScoreDisplay[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -61,12 +65,16 @@ static const uint qt_meta_data_ScoreDisplay[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    5,   24,    2, 0x0a /* Public */,
-       8,    0,   35,    2, 0x0a /* Public */,
+       1,    5,   34,    2, 0x0a /* Public */,
+       8,    0,   45,    2, 0x0a /* Public */,
+       9,    1,   46,    2, 0x0a /* Public */,
+      11,    1,   49,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::QTime,    3,    4,    5,    6,    7,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   10,
+    QMetaType::Void, QMetaType::QString,   10,
 
        0        // eod
 };
@@ -79,6 +87,8 @@ void ScoreDisplay::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         switch (_id) {
         case 0: _t->updateDisplay((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4])),(*reinterpret_cast< QTime(*)>(_a[5]))); break;
         case 1: _t->random(); break;
+        case 2: _t->changeHomePicture((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 3: _t->changeAwayPicture((*reinterpret_cast< QString(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -113,13 +123,13 @@ int ScoreDisplay::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 4)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 2;
+        _id -= 4;
     }
     return _id;
 }

@@ -638,7 +638,7 @@
       <set>Qt::ImhNone</set>
      </property>
      <property name="text">
-      <string>Thanks to @waterpololugo</string>
+      <string>Contact @waterpololugo</string>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
