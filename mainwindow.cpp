@@ -275,6 +275,12 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
         emit on_pushButton_12_clicked();
     }
 
+    if(event->key() == Qt::Key_Minus)
+    {
+        //Reset button 20 TimeOff
+        emit on_pushButton_18_clicked();
+    }
+
     if(event->key() == Qt::Key_Alt)
     {
         //Hide timeoff
@@ -336,4 +342,10 @@ void MainWindow::changeAwayPicture()
         emit awayPictureChanged(awayFilename);
     }
 
+}
+
+void MainWindow::on_pushButton_18_clicked()
+{
+    set_shot_clock(ui->lineEdit_4->text().toInt());
+    ui->lcdNumber_3->display(get_shot_clock());
 }

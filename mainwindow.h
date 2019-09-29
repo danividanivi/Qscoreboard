@@ -102,6 +102,8 @@ private slots:
 
 
 
+    void on_pushButton_18_clicked();
+
 private:
     Ui::MainWindow *ui;
     int home_goals;
