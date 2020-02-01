@@ -251,7 +251,7 @@ void MainWindow::on_pushButton_17_clicked()
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event){
-    if(event->key() == Qt::Key_Escape)
+    if(event->key() == Qt::Key_S)
     {
         //Start Stop button
         emit on_pushButton_14_clicked();

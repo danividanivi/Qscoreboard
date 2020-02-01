@@ -26,6 +26,9 @@ If you have more screens to show timeoff, activate them pressing **Add Screen 30
 
 After adding any screen, make sure focus is still on Main Screen by clicking in it, otherwhise keyboard shorcuts won't work.
 
+![Alt text](./keyboard_layout.svg)
+<img src="./img/keyboard_layout.svg">
+
 ## Developer Guide
 Qscoreboard is developed in C++ using Qt Framework 5.12.
 
