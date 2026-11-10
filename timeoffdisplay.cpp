@@ -14,11 +14,11 @@ TimeOffDisplay::~TimeOffDisplay()
 }
 
 void TimeOffDisplay::updateDisplay(int seconds, bool hide){
-    this->ui->lcdNumber->display(seconds);
+    this->ui->shotClockDisplay->display(seconds);
     if(hide){
-        this->ui->lcdNumber->hide();
+        this->ui->shotClockDisplay->hide();
     }
     else {
-        this->ui->lcdNumber->show();
+        this->ui->shotClockDisplay->show();
     }
 }
