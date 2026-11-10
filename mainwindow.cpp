@@ -108,7 +108,7 @@ void MainWindow::on_periodPlusButton_clicked()
 
 void MainWindow::on_periodMinusButton_clicked()
 {
-    if(get_period()>0){
+    if(get_period()>1){
         add_period(-1);
     }
 
