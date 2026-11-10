@@ -58,46 +58,46 @@ signals:
     void awayPictureChanged(QString);
 
 private slots:
-    void on_pushButton_clicked();
+    void on_homeGoalPlusButton_clicked();
 
-    void on_pushButton_2_clicked();
+    void on_homeGoalMinusButton_clicked();
 
-    void on_pushButton_3_clicked();
+    void on_awayGoalPlusButton_clicked();
 
-    void on_pushButton_4_clicked();
+    void on_awayGoalMinusButton_clicked();
 
-    void on_pushButton_7_clicked();
+    void on_homeTimeoutPlusButton_clicked();
 
-    void on_pushButton_8_clicked();
+    void on_homeTimeoutMinusButton_clicked();
 
-    void on_pushButton_9_clicked();
+    void on_awayTimeoutPlusButton_clicked();
 
-    void on_pushButton_10_clicked();
+    void on_awayTimeoutMinusButton_clicked();
 
-    void on_pushButton_6_clicked();
+    void on_periodPlusButton_clicked();
 
-    void on_pushButton_5_clicked();
+    void on_periodMinusButton_clicked();
 
-    void on_pushButton_11_clicked();
+    void on_shotClockStartStopButton_clicked();
 
     void update();
     void updateScreens();
 
-    void on_pushButton_12_clicked();
+    void on_shotClockResetButton_clicked();
 
-    void on_pushButton_15_clicked();
+    void on_hornButton_clicked();
 
-    void on_pushButton_14_clicked();
+    void on_gameClockStartStopButton_clicked();
 
-    void on_pushButton_13_clicked();
+    void on_gameClockResetButton_clicked();
 
-    void on_pushButton_16_clicked();
+    void on_addScoreScreenButton_clicked();
 
-    void on_pushButton_17_clicked();
+    void on_addShotClockScreenButton_clicked();
 
     void hideTimeOff();
 
-    void on_pushButton_18_clicked();
+    void on_shotClockShortResetButton_clicked();
 
 private:
     Ui::MainWindow *ui;
