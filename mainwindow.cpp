@@ -12,8 +12,6 @@ MainWindow::MainWindow(QWidget *parent) :
     away_timeouts=1;
     period=1;
     set_time_running(false);
-    scoreWindowShown = false;
-    shotClockWindowShown = false;
     shotClockHidden = false;
 
     homeFilename = ":/img/img/cwl500.png";
@@ -33,6 +31,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    // The secondary windows have no parent, so they are not deleted with us.
+    delete scoreWindow;
+    delete shotClockWindow;
     delete ui;
 }
 
@@ -182,7 +183,6 @@ void MainWindow::on_gameClockResetButton_clicked()
 
 void MainWindow::on_addScoreScreenButton_clicked()
 {
-    scoreWindowShown = true;
     scoreWindow = new ScoreDisplay();
     placeOnScreen(scoreWindow, 1);
     // Note: this replaces the frameless/stay-on-top flags set in placeOnScreen().
@@ -196,7 +196,6 @@ void MainWindow::on_addScoreScreenButton_clicked()
 
 void MainWindow::on_addShotClockScreenButton_clicked()
 {
-    shotClockWindowShown = true;
     shotClockWindow = new ShotClockDisplay();
     placeOnScreen(shotClockWindow, 2);
     shotClockWindow->showFullScreen();
@@ -250,10 +249,10 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
 }
 
 void MainWindow::updateScreens(){
-    if(scoreWindowShown){
+    if(scoreWindow){
         scoreWindow->updateDisplay(get_home_goals(),get_away_goals(),get_shot_clock(), get_period(), this->ui->main_clock_widget->getTime());
     }
-    if(shotClockWindowShown){
+    if(shotClockWindow){
         shotClockWindow->updateDisplay(get_shot_clock(), shotClockHidden);
     }
 }
