@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     period=1;
     set_time_running(false);
     allow_negative = false;
-    secondScreen = false;
+    scoreWindowShown = false;
     shotClockWindowShown = false;
     shotClockHidden = false;
 
@@ -185,17 +185,17 @@ void MainWindow::on_gameClockResetButton_clicked()
 
 void MainWindow::on_addScoreScreenButton_clicked()
 {
-    secondScreen = true;
+    scoreWindowShown = true;
     QRect screenres = QApplication::desktop()->screenGeometry(1/*screenNumber*/);
-    s = new ScoreDisplay();
-    s->setAttribute(Qt::WA_ShowWithoutActivating);
-    s->setWindowFlags(Qt::Tool | Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint);
-    s->move(QPoint(screenres.x(), screenres.y()));
-    s->resize(screenres.width(), screenres.height());
-    s->setWindowFlags(Qt::Tool);
-    s->showFullScreen();
-    connect(this, SIGNAL(homePictureChanged(QString)), s, SLOT(changeHomePicture(QString)));
-    connect(this, SIGNAL(awayPictureChanged(QString)), s, SLOT(changeAwayPicture(QString)));
+    scoreWindow = new ScoreDisplay();
+    scoreWindow->setAttribute(Qt::WA_ShowWithoutActivating);
+    scoreWindow->setWindowFlags(Qt::Tool | Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint);
+    scoreWindow->move(QPoint(screenres.x(), screenres.y()));
+    scoreWindow->resize(screenres.width(), screenres.height());
+    scoreWindow->setWindowFlags(Qt::Tool);
+    scoreWindow->showFullScreen();
+    connect(this, SIGNAL(homePictureChanged(QString)), scoreWindow, SLOT(changeHomePicture(QString)));
+    connect(this, SIGNAL(awayPictureChanged(QString)), scoreWindow, SLOT(changeAwayPicture(QString)));
     emit homePictureChanged(homeFilename);
     emit awayPictureChanged(awayFilename);
 }
@@ -252,8 +252,8 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
 }
 
 void MainWindow::updateScreens(){
-    if(secondScreen==true){
-        s->updateDisplay(get_home_goals(),get_away_goals(),get_shot_clock(), get_period(), this->ui->main_clock_widget->getTime());
+    if(scoreWindowShown==true){
+        scoreWindow->updateDisplay(get_home_goals(),get_away_goals(),get_shot_clock(), get_period(), this->ui->main_clock_widget->getTime());
     }
     if(shotClockWindowShown==true){
         shotClockWindow->updateDisplay(get_shot_clock(), shotClockHidden);
