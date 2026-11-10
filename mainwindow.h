@@ -114,8 +114,8 @@ private:
     QTimer *timerScreens = new QTimer(this);
     int shot_clock;
 
-    ScoreDisplay *s;
-    bool secondScreen;
+    ScoreDisplay *scoreWindow;
+    bool scoreWindowShown;
 
     ShotClockDisplay *shotClockWindow;
     bool shotClockWindowShown;
