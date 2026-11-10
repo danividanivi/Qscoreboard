@@ -28,11 +28,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(timer, SIGNAL(timeout()), this, SLOT(update()));
     ui->setupUi(this);
-    set_shot_clock(ui->lineEdit->text().toInt());
+    set_shot_clock(ui->shotClockInput->text().toInt());
     connect(timerScreens, SIGNAL(timeout()), this, SLOT(updateScreens()));
 
-    connect(ui->label_11, SIGNAL(clicked()), this, SLOT(changeHomePicture()));
-    connect(ui->label_12, SIGNAL(clicked()), this, SLOT(changeAwayPicture()));
+    connect(ui->homeLogoLabel, SIGNAL(clicked()), this, SLOT(changeHomePicture()));
+    connect(ui->awayLogoLabel, SIGNAL(clicked()), this, SLOT(changeAwayPicture()));
 }
 
 MainWindow::~MainWindow()
@@ -40,85 +40,85 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_homeGoalPlusButton_clicked()
 {
     add_home_goals(+1);
-    ui->lcdNumber->display(get_home_goals());
+    ui->homeGoalsDisplay->display(get_home_goals());
 }
 
-void MainWindow::on_pushButton_2_clicked()
+void MainWindow::on_homeGoalMinusButton_clicked()
 {
     if(get_home_goals()>0 || allow_negative==true){
         add_home_goals(-1);
     }
 
-    ui->lcdNumber->display(get_home_goals());
+    ui->homeGoalsDisplay->display(get_home_goals());
 }
 
-void MainWindow::on_pushButton_3_clicked()
+void MainWindow::on_awayGoalPlusButton_clicked()
 {
     add_away_goals(+1);
-    ui->lcdNumber_2->display(get_away_goals());
+    ui->awayGoalsDisplay->display(get_away_goals());
 }
 
-void MainWindow::on_pushButton_4_clicked()
+void MainWindow::on_awayGoalMinusButton_clicked()
 {
     if(get_away_goals()>0 || allow_negative==true){
         add_away_goals(-1);
     }
-    ui->lcdNumber_2->display(get_away_goals());
+    ui->awayGoalsDisplay->display(get_away_goals());
 }
 
-void MainWindow::on_pushButton_7_clicked()
+void MainWindow::on_homeTimeoutPlusButton_clicked()
 {
     add_home_timeoff(+1);
-    ui->lcdNumber_6->display(get_home_timeoff());
+    ui->homeTimeoutsDisplay->display(get_home_timeoff());
 }
 
-void MainWindow::on_pushButton_8_clicked()
+void MainWindow::on_homeTimeoutMinusButton_clicked()
 {
     if(get_home_timeoff()>0 || allow_negative==true){
         add_home_timeoff(-1);
     }
-    ui->lcdNumber_6->display(get_home_timeoff());
+    ui->homeTimeoutsDisplay->display(get_home_timeoff());
 }
 
-void MainWindow::on_pushButton_9_clicked()
+void MainWindow::on_awayTimeoutPlusButton_clicked()
 {
     add_away_timeoff(+1);
 
-    ui->lcdNumber_7->display(get_away_timeoff());
+    ui->awayTimeoutsDisplay->display(get_away_timeoff());
 }
 
-void MainWindow::on_pushButton_10_clicked()
+void MainWindow::on_awayTimeoutMinusButton_clicked()
 {
     if(get_away_timeoff()>0 || allow_negative==true){
         add_away_timeoff(-1);
     }
 
-    ui->lcdNumber_7->display(get_away_timeoff());
+    ui->awayTimeoutsDisplay->display(get_away_timeoff());
 }
 
-void MainWindow::on_pushButton_6_clicked()
+void MainWindow::on_periodPlusButton_clicked()
 {
     add_period(+1);
     set_home_timeoff(1);
     set_away_timeoff(1);
-    ui->lcdNumber_4->display(get_period());
-    ui->lcdNumber_6->display(get_home_timeoff());
-    ui->lcdNumber_7->display(get_away_timeoff());
+    ui->periodDisplay->display(get_period());
+    ui->homeTimeoutsDisplay->display(get_home_timeoff());
+    ui->awayTimeoutsDisplay->display(get_away_timeoff());
 }
 
-void MainWindow::on_pushButton_5_clicked()
+void MainWindow::on_periodMinusButton_clicked()
 {
     if(get_period()>0 || allow_negative == true){
         add_period(-1);
     }
 
-    ui->lcdNumber_4->display(get_period());
+    ui->periodDisplay->display(get_period());
 }
 
-void MainWindow::on_pushButton_11_clicked()
+void MainWindow::on_shotClockStartStopButton_clicked()
 {
     //If it is stopped, start. If it is running stop it.
     if(time_running)
@@ -135,7 +135,7 @@ void MainWindow::on_pushButton_11_clicked()
 void MainWindow::update()
 {
     if(ui->main_clock_widget->is_playing()){
-        ui->pushButton_11->setEnabled(true);
+        ui->shotClockStartStopButton->setEnabled(true);
         if(get_shot_clock()>0 || allow_negative==true){
             add_shot_clock(-1);
             if(get_shot_clock()==0 ){
@@ -144,25 +144,25 @@ void MainWindow::update()
         }
     }
 
-    ui->lcdNumber_3->display(get_shot_clock());
+    ui->shotClockDisplay->display(get_shot_clock());
 }
 
-void MainWindow::on_pushButton_12_clicked()
+void MainWindow::on_shotClockResetButton_clicked()
 {
-    set_shot_clock(ui->lineEdit->text().toInt());
-    ui->lcdNumber_3->display(get_shot_clock());
+    set_shot_clock(ui->shotClockInput->text().toInt());
+    ui->shotClockDisplay->display(get_shot_clock());
 }
 
-void MainWindow::on_pushButton_15_clicked()
+void MainWindow::on_hornButton_clicked()
 {
     timeOffSound.play();
 }
 
-void MainWindow::on_pushButton_14_clicked()
+void MainWindow::on_gameClockStartStopButton_clicked()
 {
     //Main clock
     ui->main_clock_widget->start_stop();
-    ui->pushButton_11->setEnabled(true);
+    ui->shotClockStartStopButton->setEnabled(true);
 
     //Timeoff clock is synchronized with main clock
     //If it is stopped, start. If it is running stop it.
@@ -177,14 +177,14 @@ void MainWindow::on_pushButton_14_clicked()
     }
 }
 
-void MainWindow::on_pushButton_13_clicked()
+void MainWindow::on_gameClockResetButton_clicked()
 {
-    ui->main_clock_widget->set_minutes(ui->lineEdit_2->text().toInt());
-    ui->main_clock_widget->set_seconds(ui->lineEdit_3->text().toInt());
+    ui->main_clock_widget->set_minutes(ui->gameClockMinutesInput->text().toInt());
+    ui->main_clock_widget->set_seconds(ui->gameClockSecondsInput->text().toInt());
     ui->main_clock_widget->showTime();
 }
 
-void MainWindow::on_pushButton_16_clicked()
+void MainWindow::on_addScoreScreenButton_clicked()
 {
     secondScreen = true;
     QRect screenres = QApplication::desktop()->screenGeometry(1/*screenNumber*/);
@@ -201,7 +201,7 @@ void MainWindow::on_pushButton_16_clicked()
     emit awayPictureChanged(awayFilename);
 }
 
-void MainWindow::on_pushButton_17_clicked()
+void MainWindow::on_addShotClockScreenButton_clicked()
 {
     thirdScreen = true;
     timeoffScreen = true;
@@ -219,37 +219,37 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
     if(event->key() == Qt::Key_S)
     {
         //Start Stop button
-        emit on_pushButton_14_clicked();
+        on_gameClockStartStopButton_clicked();
     }
 
     if(event->key() == Qt::Key_R)
     {
         //Reset button
-        emit on_pushButton_13_clicked();
+        on_gameClockResetButton_clicked();
     }
 
     if(event->key() == Qt::Key_PageUp)
     {
         //Start/Stop Timeoff button
-        emit on_pushButton_11_clicked();
+        on_shotClockStartStopButton_clicked();
     }
 
     if(event->key() == Qt::Key_PageDown)
     {
         //Reset button TimeOff
-        emit on_pushButton_12_clicked();
+        on_shotClockResetButton_clicked();
     }
 
     if(event->key() == Qt::Key_Minus)
     {
         //Reset button 20 TimeOff
-        emit on_pushButton_18_clicked();
+        on_shotClockShortResetButton_clicked();
     }
 
     if(event->key() == Qt::Key_Alt)
     {
         //Hide timeoff
-        emit hideTimeOff();
+        hideTimeOff();
     }
 }
 
@@ -263,12 +263,12 @@ void MainWindow::updateScreens(){
 }
 
 void MainWindow::hideTimeOff(){
-    if(this->ui->lcdNumber_3->isVisible()){
-        this->ui->lcdNumber_3->hide();
+    if(this->ui->shotClockDisplay->isVisible()){
+        this->ui->shotClockDisplay->hide();
         timeoffHidden = true;
     }
     else {
-        this->ui->lcdNumber_3->show();
+        this->ui->shotClockDisplay->show();
         timeoffHidden = false;
     }
 }
@@ -280,7 +280,7 @@ void MainWindow::changeHomePicture()
 
     if (!fileName.isEmpty()){
         homeFilename = fileName;
-        ui->label_11->setPixmap(homeFilename);
+        ui->homeLogoLabel->setPixmap(homeFilename);
         emit homePictureChanged(homeFilename);
     }
 }
@@ -292,13 +292,13 @@ void MainWindow::changeAwayPicture()
 
     if (!fileName.isEmpty()){
         awayFilename = fileName;
-        ui->label_12->setPixmap(awayFilename);
+        ui->awayLogoLabel->setPixmap(awayFilename);
         emit awayPictureChanged(awayFilename);
     }
 }
 
-void MainWindow::on_pushButton_18_clicked()
+void MainWindow::on_shotClockShortResetButton_clicked()
 {
-    set_shot_clock(ui->lineEdit_4->text().toInt());
-    ui->lcdNumber_3->display(get_shot_clock());
+    set_shot_clock(ui->shotClockShortInput->text().toInt());
+    ui->shotClockDisplay->display(get_shot_clock());
 }

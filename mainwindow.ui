@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="7" column="7" rowspan="2" colspan="2">
-     <widget class="ClickableLabel" name="label_12">
+     <widget class="ClickableLabel" name="awayLogoLabel">
       <property name="maximumSize">
        <size>
         <width>500</width>
@@ -35,14 +35,14 @@
      </widget>
     </item>
     <item row="10" column="7" rowspan="2">
-     <widget class="QPushButton" name="pushButton_10">
+     <widget class="QPushButton" name="awayTimeoutMinusButton">
       <property name="text">
        <string>-1</string>
       </property>
      </widget>
     </item>
     <item row="10" column="0" rowspan="2">
-     <widget class="QPushButton" name="pushButton_8">
+     <widget class="QPushButton" name="homeTimeoutMinusButton">
       <property name="text">
        <string>-1</string>
       </property>
@@ -64,14 +64,14 @@
      </widget>
     </item>
     <item row="12" column="5">
-     <widget class="QPushButton" name="pushButton_13">
+     <widget class="QPushButton" name="gameClockResetButton">
       <property name="text">
        <string>Reset</string>
       </property>
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="homeGoalPlusButton">
       <property name="text">
        <string>+1</string>
       </property>
@@ -84,21 +84,21 @@
      </widget>
     </item>
     <item row="13" column="4">
-     <widget class="QPushButton" name="pushButton_16">
+     <widget class="QPushButton" name="addScoreScreenButton">
       <property name="text">
        <string>Add Screen</string>
       </property>
      </widget>
     </item>
     <item row="12" column="3">
-     <widget class="QPushButton" name="pushButton_14">
+     <widget class="QPushButton" name="gameClockStartStopButton">
       <property name="text">
        <string>Start/Stop</string>
       </property>
      </widget>
     </item>
     <item row="2" column="3" rowspan="3" colspan="2">
-     <widget class="QLCDNumber" name="lcdNumber_3">
+     <widget class="QLCDNumber" name="shotClockDisplay">
       <property name="digitCount">
        <number>2</number>
       </property>
@@ -108,14 +108,14 @@
      </widget>
     </item>
     <item row="3" column="7" rowspan="2">
-     <widget class="QPushButton" name="pushButton_4">
+     <widget class="QPushButton" name="awayGoalMinusButton">
       <property name="text">
        <string>-1</string>
       </property>
      </widget>
     </item>
     <item row="4" column="6">
-     <widget class="QPushButton" name="pushButton_5">
+     <widget class="QPushButton" name="periodMinusButton">
       <property name="text">
        <string>-1</string>
       </property>
@@ -137,21 +137,21 @@
      </widget>
     </item>
     <item row="1" column="7" rowspan="2">
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="awayGoalPlusButton">
       <property name="text">
        <string>+1</string>
       </property>
      </widget>
     </item>
     <item row="3" column="0" rowspan="2">
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="homeGoalMinusButton">
       <property name="text">
        <string>-1</string>
       </property>
      </widget>
     </item>
     <item row="9" column="0">
-     <widget class="QPushButton" name="pushButton_7">
+     <widget class="QPushButton" name="homeTimeoutPlusButton">
       <property name="text">
        <string>+1</string>
       </property>
@@ -161,14 +161,14 @@
      <widget class="DigitalClock" name="main_clock_widget" native="true"/>
     </item>
     <item row="2" column="6" rowspan="2">
-     <widget class="QPushButton" name="pushButton_6">
+     <widget class="QPushButton" name="periodPlusButton">
       <property name="text">
        <string>+1</string>
       </property>
      </widget>
     </item>
     <item row="7" column="0" rowspan="2" colspan="2">
-     <widget class="ClickableLabel" name="label_11">
+     <widget class="ClickableLabel" name="homeLogoLabel">
       <property name="maximumSize">
        <size>
         <width>500</width>
@@ -199,7 +199,7 @@
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QLCDNumber" name="lcdNumber_7">
+      <widget class="QLCDNumber" name="awayTimeoutsDisplay">
        <property name="digitCount">
         <number>1</number>
        </property>
@@ -210,28 +210,28 @@
      </widget>
     </item>
     <item row="9" column="7">
-     <widget class="QPushButton" name="pushButton_9">
+     <widget class="QPushButton" name="awayTimeoutPlusButton">
       <property name="text">
        <string>+1</string>
       </property>
      </widget>
     </item>
     <item row="13" column="5">
-     <widget class="QPushButton" name="pushButton_17">
+     <widget class="QPushButton" name="addShotClockScreenButton">
       <property name="text">
        <string>Add Screen 30</string>
       </property>
      </widget>
     </item>
     <item row="13" column="3">
-     <widget class="QPushButton" name="pushButton_15">
+     <widget class="QPushButton" name="hornButton">
       <property name="text">
        <string>Sound</string>
       </property>
      </widget>
     </item>
     <item row="4" column="2">
-     <widget class="QPushButton" name="pushButton_12">
+     <widget class="QPushButton" name="shotClockResetButton">
       <property name="text">
        <string>Reset</string>
       </property>
@@ -253,7 +253,7 @@
      </widget>
     </item>
     <item row="11" column="5">
-     <widget class="QLineEdit" name="lineEdit_3">
+     <widget class="QLineEdit" name="gameClockSecondsInput">
       <property name="text">
        <string>00</string>
       </property>
@@ -263,7 +263,7 @@
      </widget>
     </item>
     <item row="1" column="8" rowspan="6">
-     <widget class="QLCDNumber" name="lcdNumber_2">
+     <widget class="QLCDNumber" name="awayGoalsDisplay">
       <property name="digitCount">
        <number>3</number>
       </property>
@@ -295,7 +295,7 @@
      </widget>
     </item>
     <item row="11" column="3">
-     <widget class="QLineEdit" name="lineEdit_2">
+     <widget class="QLineEdit" name="gameClockMinutesInput">
       <property name="text">
        <string>08</string>
       </property>
@@ -305,7 +305,7 @@
      </widget>
     </item>
     <item row="2" column="2" rowspan="2">
-     <widget class="QPushButton" name="pushButton_11">
+     <widget class="QPushButton" name="shotClockStartStopButton">
       <property name="enabled">
        <bool>false</bool>
       </property>
@@ -327,7 +327,7 @@
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QLCDNumber" name="lcdNumber_6">
+      <widget class="QLCDNumber" name="homeTimeoutsDisplay">
        <property name="digitCount">
         <number>1</number>
        </property>
@@ -338,7 +338,7 @@
      </widget>
     </item>
     <item row="1" column="1" rowspan="6">
-     <widget class="QLCDNumber" name="lcdNumber">
+     <widget class="QLCDNumber" name="homeGoalsDisplay">
       <property name="digitCount">
        <number>3</number>
       </property>
@@ -357,7 +357,7 @@
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QLCDNumber" name="lcdNumber_4">
+      <widget class="QLCDNumber" name="periodDisplay">
        <property name="digitCount">
         <number>1</number>
        </property>
@@ -368,7 +368,7 @@
      </widget>
     </item>
     <item row="5" column="4">
-     <widget class="QLineEdit" name="lineEdit_4">
+     <widget class="QLineEdit" name="shotClockShortInput">
       <property name="text">
        <string>20</string>
       </property>
@@ -378,14 +378,14 @@
      </widget>
     </item>
     <item row="5" column="3">
-     <widget class="QPushButton" name="pushButton_18">
+     <widget class="QPushButton" name="shotClockShortResetButton">
       <property name="text">
        <string>Reset / 2</string>
       </property>
      </widget>
     </item>
     <item row="5" column="2">
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="shotClockInput">
       <property name="text">
        <string>30</string>
       </property>
