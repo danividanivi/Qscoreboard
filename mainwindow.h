@@ -100,6 +100,8 @@ private slots:
     void on_shotClockShortResetButton_clicked();
 
 private:
+    QString askForLogoFile();
+
     Ui::MainWindow *ui;
     int home_goals;
     int away_goals;

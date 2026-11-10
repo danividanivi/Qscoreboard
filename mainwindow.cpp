@@ -271,11 +271,15 @@ void MainWindow::toggleShotClockVisibility(){
     }
 }
 
+QString MainWindow::askForLogoFile()
+{
+    return QFileDialog::getOpenFileName(this,
+        tr("Select Image"), "img", tr("Image Files (*.png *.jpg *.bmp)"));
+}
+
 void MainWindow::changeHomePicture()
 {
-    QString fileName = QFileDialog::getOpenFileName(this,
-        tr("Select Image"), "img/", tr("Image Files (*.png *.jpg *.bmp)"));
-
+    QString fileName = askForLogoFile();
     if (!fileName.isEmpty()){
         homeFilename = fileName;
         ui->homeLogoLabel->setPixmap(homeFilename);
@@ -285,9 +289,7 @@ void MainWindow::changeHomePicture()
 
 void MainWindow::changeAwayPicture()
 {
-    QString fileName = QFileDialog::getOpenFileName(this,
-        tr("Select Image"), "img", tr("Image Files (*.png *.jpg *.bmp)"));
-
+    QString fileName = askForLogoFile();
     if (!fileName.isEmpty()){
         awayFilename = fileName;
         ui->awayLogoLabel->setPixmap(awayFilename);
