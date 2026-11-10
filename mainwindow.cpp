@@ -17,13 +17,10 @@ MainWindow::MainWindow(QWidget *parent) :
     homeFilename = ":/img/img/cwl500.png";
     awayFilename = ":/img/img/cwl500.png";
 
-    //update secondary sreens (if they exist) every 1 millisecond
-    timerScreens->start(1);
-
     connect(timer, &QTimer::timeout, this, &MainWindow::tickShotClock);
     ui->setupUi(this);
+    connect(ui->main_clock_widget, &DigitalClock::timeChanged, this, &MainWindow::updateScreens);
     set_shot_clock(ui->shotClockInput->text().toInt());
-    connect(timerScreens, &QTimer::timeout, this, &MainWindow::updateScreens);
 
     connect(ui->homeLogoLabel, &ClickableLabel::clicked, this, &MainWindow::changeHomePicture);
     connect(ui->awayLogoLabel, &ClickableLabel::clicked, this, &MainWindow::changeAwayPicture);
@@ -41,6 +38,7 @@ void MainWindow::on_homeGoalPlusButton_clicked()
 {
     add_home_goals(+1);
     ui->homeGoalsDisplay->display(get_home_goals());
+    updateScreens();
 }
 
 void MainWindow::on_homeGoalMinusButton_clicked()
@@ -50,12 +48,14 @@ void MainWindow::on_homeGoalMinusButton_clicked()
     }
 
     ui->homeGoalsDisplay->display(get_home_goals());
+    updateScreens();
 }
 
 void MainWindow::on_awayGoalPlusButton_clicked()
 {
     add_away_goals(+1);
     ui->awayGoalsDisplay->display(get_away_goals());
+    updateScreens();
 }
 
 void MainWindow::on_awayGoalMinusButton_clicked()
@@ -64,6 +64,7 @@ void MainWindow::on_awayGoalMinusButton_clicked()
         add_away_goals(-1);
     }
     ui->awayGoalsDisplay->display(get_away_goals());
+    updateScreens();
 }
 
 void MainWindow::on_homeTimeoutPlusButton_clicked()
@@ -104,6 +105,7 @@ void MainWindow::on_periodPlusButton_clicked()
     ui->periodDisplay->display(get_period());
     ui->homeTimeoutsDisplay->display(get_home_timeouts());
     ui->awayTimeoutsDisplay->display(get_away_timeouts());
+    updateScreens();
 }
 
 void MainWindow::on_periodMinusButton_clicked()
@@ -113,6 +115,7 @@ void MainWindow::on_periodMinusButton_clicked()
     }
 
     ui->periodDisplay->display(get_period());
+    updateScreens();
 }
 
 void MainWindow::on_shotClockStartStopButton_clicked()
@@ -142,12 +145,14 @@ void MainWindow::tickShotClock()
     }
 
     ui->shotClockDisplay->display(get_shot_clock());
+    updateScreens();
 }
 
 void MainWindow::on_shotClockResetButton_clicked()
 {
     set_shot_clock(ui->shotClockInput->text().toInt());
     ui->shotClockDisplay->display(get_shot_clock());
+    updateScreens();
 }
 
 void MainWindow::on_hornButton_clicked()
@@ -196,6 +201,7 @@ void MainWindow::on_addScoreScreenButton_clicked()
     scoreWindow->showFullScreen();
     emit homePictureChanged(homeFilename);
     emit awayPictureChanged(awayFilename);
+    updateScreens();
 }
 
 void MainWindow::on_addShotClockScreenButton_clicked()
@@ -205,6 +211,7 @@ void MainWindow::on_addShotClockScreenButton_clicked()
     }
     placeOnScreen(shotClockWindow, 2);
     shotClockWindow->showFullScreen();
+    updateScreens();
 }
 
 void MainWindow::placeOnScreen(QWidget *window, int screenNumber)
@@ -272,6 +279,7 @@ void MainWindow::toggleShotClockVisibility(){
         this->ui->shotClockDisplay->show();
         shotClockHidden = false;
     }
+    updateScreens();
 }
 
 QString MainWindow::askForLogoFile()
@@ -304,4 +312,5 @@ void MainWindow::on_shotClockShortResetButton_clicked()
 {
     set_shot_clock(ui->shotClockShortInput->text().toInt());
     ui->shotClockDisplay->display(get_shot_clock());
+    updateScreens();
 }
