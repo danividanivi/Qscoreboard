@@ -28,7 +28,7 @@ Use a keyboard or screen keyboard to enter numbers.
 
 If you have a secondary screen to show game status to viewers, activate it by pressing **Add Screen**.
 
-If you have more screens to show timeoff, activate them by pressing **Add Screen 30**.
+If you have another screen to show the shot clock, activate it by pressing **Add Screen 30**.
 
 After adding any screen, make sure focus is still on Main Screen by clicking in it, otherwise keyboard shortcuts won't work.
 
