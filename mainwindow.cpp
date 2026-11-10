@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //update secondary sreens (if they exist) every 1 millisecond
     timerScreens->start(1);
 
-    connect(timer, SIGNAL(timeout()), this, SLOT(update()));
+    connect(timer, SIGNAL(timeout()), this, SLOT(tickShotClock()));
     ui->setupUi(this);
     set_shot_clock(ui->shotClockInput->text().toInt());
     connect(timerScreens, SIGNAL(timeout()), this, SLOT(updateScreens()));
@@ -131,7 +131,7 @@ void MainWindow::on_shotClockStartStopButton_clicked()
     }
 }
 
-void MainWindow::update()
+void MainWindow::tickShotClock()
 {
     if(ui->main_clock_widget->is_playing()){
         ui->shotClockStartStopButton->setEnabled(true);

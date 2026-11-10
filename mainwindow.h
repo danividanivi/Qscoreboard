@@ -80,7 +80,7 @@ private slots:
 
     void on_shotClockStartStopButton_clicked();
 
-    void update();
+    void tickShotClock();
     void updateScreens();
 
     void on_shotClockResetButton_clicked();
