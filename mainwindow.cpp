@@ -14,7 +14,6 @@ MainWindow::MainWindow(QWidget *parent) :
     away_timeouts=1;
     period=1;
     set_time_running(false);
-    allow_negative = false;
     scoreWindowShown = false;
     shotClockWindowShown = false;
     shotClockHidden = false;
@@ -47,7 +46,7 @@ void MainWindow::on_homeGoalPlusButton_clicked()
 
 void MainWindow::on_homeGoalMinusButton_clicked()
 {
-    if(get_home_goals()>0 || allow_negative==true){
+    if(get_home_goals()>0){
         add_home_goals(-1);
     }
 
@@ -62,7 +61,7 @@ void MainWindow::on_awayGoalPlusButton_clicked()
 
 void MainWindow::on_awayGoalMinusButton_clicked()
 {
-    if(get_away_goals()>0 || allow_negative==true){
+    if(get_away_goals()>0){
         add_away_goals(-1);
     }
     ui->awayGoalsDisplay->display(get_away_goals());
@@ -76,7 +75,7 @@ void MainWindow::on_homeTimeoutPlusButton_clicked()
 
 void MainWindow::on_homeTimeoutMinusButton_clicked()
 {
-    if(get_home_timeouts()>0 || allow_negative==true){
+    if(get_home_timeouts()>0){
         add_home_timeouts(-1);
     }
     ui->homeTimeoutsDisplay->display(get_home_timeouts());
@@ -91,7 +90,7 @@ void MainWindow::on_awayTimeoutPlusButton_clicked()
 
 void MainWindow::on_awayTimeoutMinusButton_clicked()
 {
-    if(get_away_timeouts()>0 || allow_negative==true){
+    if(get_away_timeouts()>0){
         add_away_timeouts(-1);
     }
 
@@ -110,7 +109,7 @@ void MainWindow::on_periodPlusButton_clicked()
 
 void MainWindow::on_periodMinusButton_clicked()
 {
-    if(get_period()>0 || allow_negative == true){
+    if(get_period()>0){
         add_period(-1);
     }
 
@@ -135,7 +134,7 @@ void MainWindow::tickShotClock()
 {
     if(ui->main_clock_widget->is_playing()){
         ui->shotClockStartStopButton->setEnabled(true);
-        if(get_shot_clock()>0 || allow_negative==true){
+        if(get_shot_clock()>0){
             add_shot_clock(-1);
             if(get_shot_clock()==0 ){
                 shotClockSound.play();

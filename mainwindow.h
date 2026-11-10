@@ -111,7 +111,6 @@ private:
     int period;
 
     bool time_running;
-    bool allow_negative;
 
     QTimer *timer = new QTimer(this);
     QTimer *timerScreens = new QTimer(this);
