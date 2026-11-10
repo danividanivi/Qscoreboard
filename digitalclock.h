@@ -74,6 +74,10 @@ public:
     QTime getTime() const;
     void setTime(const QTime &value);
 
+signals:
+    // Emitted whenever the displayed time changes (tick or reset).
+    void timeChanged();
+
 public slots:
     void start_stop();
     void tickTime();

@@ -89,6 +89,7 @@ void DigitalClock::showTime()
     if ((time.second() % 2) == 0)
         text[2] = ' ';
     display(text);
+    emit timeChanged();
 }
 
 QTime DigitalClock::getTime() const

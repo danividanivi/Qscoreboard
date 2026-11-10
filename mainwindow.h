@@ -113,7 +113,6 @@ private:
     bool time_running;
 
     QTimer *timer = new QTimer(this);
-    QTimer *timerScreens = new QTimer(this);
     int shot_clock;
 
     ScoreDisplay *scoreWindow = nullptr;
