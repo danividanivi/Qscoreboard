@@ -6,7 +6,6 @@
 #include <QtMultimedia/QSound>
 #include "scoredisplay.h"
 #include <QKeyEvent>
-#include <QDebug>
 #include "timeoffdisplay.h"
 #include <QDesktopWidget>
 #include <QFileDialog>

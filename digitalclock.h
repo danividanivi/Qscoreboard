@@ -80,10 +80,6 @@ public slots:
     void tickTime();
     void showTime();
 
-private slots:
-
-
-
 private:
     int minutes;
     int seconds;

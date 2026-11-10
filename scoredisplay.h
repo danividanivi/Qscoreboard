@@ -18,7 +18,6 @@ public:
 
 public slots:
     void updateDisplay(int home, int away, int shot_clock, int period, QTime time);
-    void random();
     void changeHomePicture(QString fileName);
     void changeAwayPicture(QString fileName);
 

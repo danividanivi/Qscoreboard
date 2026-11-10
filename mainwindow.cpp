@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QtMultimedia/QMediaPlayer>
 #include "scoredisplay.h"
 #include "timeoffdisplay.h"
 
@@ -298,7 +297,6 @@ void MainWindow::updateScreens(){
     }
     if(timeoffScreen==true){
         t->updateDisplay(get_shot_clock(), timeoffHidden);
-//        qDebug() << "sec" << get_shot_clock();
 
     }
 }

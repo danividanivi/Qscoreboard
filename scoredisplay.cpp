@@ -26,13 +26,7 @@ void ScoreDisplay::updateDisplay(int home, int away, int shot_clock, int period,
 
 
 
-    //TODO Correctly connect this widget with Main Window
 
-}
-
-void ScoreDisplay::random(){
-    this->ui->lcdNumber->display(288);
-    this->ui->lcdNumber_2->display(288);
 }
 
 void ScoreDisplay::changeHomePicture(QString fileName)
