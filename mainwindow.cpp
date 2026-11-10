@@ -1,7 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "scoredisplay.h"
-#include "shotclockdisplay.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -252,10 +250,10 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
 }
 
 void MainWindow::updateScreens(){
-    if(scoreWindowShown==true){
+    if(scoreWindowShown){
         scoreWindow->updateDisplay(get_home_goals(),get_away_goals(),get_shot_clock(), get_period(), this->ui->main_clock_widget->getTime());
     }
-    if(shotClockWindowShown==true){
+    if(shotClockWindowShown){
         shotClockWindow->updateDisplay(get_shot_clock(), shotClockHidden);
     }
 }

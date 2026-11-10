@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-#include "scoredisplay.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])

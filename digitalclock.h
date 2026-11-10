@@ -63,11 +63,11 @@ class DigitalClock : public QLCDNumber
 
 public:
     DigitalClock(QWidget *parent = 0);
-    int get_seconds(){return seconds;}
+    int get_seconds() const {return seconds;}
     void set_seconds(int s){seconds = s;     time = QTime(0,this->get_minutes(),this->get_seconds());}
-    int get_minutes(){return minutes;}
+    int get_minutes() const {return minutes;}
     void set_minutes(int m){minutes = m;    time = QTime(0,this->get_minutes(),this->get_seconds());}
-    bool is_playing(){return playing;}
+    bool is_playing() const {return playing;}
     void set_playing(bool play){playing = play;}
     QTimer *timer;
 
