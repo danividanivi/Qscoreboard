@@ -50,7 +50,20 @@ jobs:
         run: |
           mkdir Qscoreboard
           copy build\release\Qscoreboard.exe Qscoreboard\
-          windeployqt --release --no-translations Qscoreboard\Qscoreboard.exe
+          windeployqt --release --no-translations --no-compiler-runtime Qscoreboard\Qscoreboard.exe
+
+      # Ship the MSVC runtime DLLs next to the .exe (app-local) so users don't
+      # have to install the Visual C++ Redistributable first.
+      - name: Bundle MSVC runtime
+        shell: pwsh
+        run: |
+          $crt = Get-ChildItem (Join-Path $env:VCToolsRedistDir 'x64') -Directory -Filter 'Microsoft.VC*.CRT' | Select-Object -First 1
+          if (-not $crt) { throw "MSVC CRT redist folder not found under $env:VCToolsRedistDir" }
+          Copy-Item (Join-Path $crt.FullName '*.dll') Qscoreboard\
+          foreach ($dll in 'vcruntime140.dll', 'vcruntime140_1.dll', 'msvcp140.dll', 'msvcp140_1.dll') {
+            if (-not (Test-Path "Qscoreboard\$dll")) { throw "$dll missing from package" }
+          }
+          Get-ChildItem Qscoreboard\*.dll | Select-Object Name
 
       - uses: actions/upload-artifact@v4
         with:
