@@ -57,7 +57,6 @@ signals:
     void homePictureChanged(QString);
     void awayPictureChanged(QString);
 
-
 private slots:
     void on_pushButton_clicked();
 
@@ -84,7 +83,6 @@ private slots:
     void update();
     void updateScreens();
 
-
     void on_pushButton_12_clicked();
 
     void on_pushButton_15_clicked();
@@ -98,8 +96,6 @@ private slots:
     void on_pushButton_17_clicked();
 
     void hideTimeOff();
-
-
 
     void on_pushButton_18_clicked();
 
@@ -130,7 +126,6 @@ private:
 
     QString homeFilename;
     QString awayFilename;
-
 };
 
 #endif // MAINWINDOW_H

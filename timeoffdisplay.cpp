@@ -21,5 +21,4 @@ void TimeOffDisplay::updateDisplay(int seconds, bool hide){
     else {
         this->ui->lcdNumber->show();
     }
-
 }
