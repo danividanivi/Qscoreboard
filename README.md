@@ -32,14 +32,36 @@ If you have another screen to show the shot clock, activate it by pressing **Add
 
 After adding any screen, make sure focus is still on Main Screen by clicking in it, otherwise keyboard shortcuts won't work.
 
+### Keyboard shortcuts
+
+| Key | Action |
+|---|---|
+| <kbd>S</kbd> | Start/stop the game clock (the shot clock follows it) |
+| <kbd>R</kbd> | Reset the game clock to the minutes and seconds entered |
+| <kbd>Page Up</kbd> | Start/stop the shot clock |
+| <kbd>Page Down</kbd> | Reset the shot clock to its full value (30 by default) |
+| <kbd>-</kbd> | Reset the shot clock to its short value (20 by default) |
+| <kbd>Alt</kbd> | Show/hide the shot clock |
+
 ![Keyboard shortcuts](./img/keyboard_layout.svg)
 
 ## Developer Guide
-Qscoreboard is developed in C++ using Qt Framework 5.12.
+Qscoreboard is written in C++ with Qt 5 (Widgets and Multimedia). It does not build with Qt 6 yet.
 
-It has been compiled and tested in several Windows 10 x64 computers.
+It was originally developed with Qt 5.12 and tested on several Windows 10 x64 computers. It also builds on Linux with Qt 5.15.
 
-You may be able to compile it and use it in a different platform and Operating System, if you do so please let me know.
+### Building on Windows
+Open `Qscoreboard.pro` in Qt Creator with a Qt 5 kit (MinGW or MSVC) and build. To package a release, run `windeployqt` on the resulting `Qscoreboard.exe`.
+
+### Building on Linux (Ubuntu/Debian)
+```bash
+sudo apt install build-essential qtbase5-dev qtmultimedia5-dev libqt5multimedia5-plugins
+```
+```bash
+mkdir build && cd build && qmake ../Qscoreboard.pro && make
+```
+
+If you build or run it on another platform, please let me know how it went.
 
 ## Contact
 For support or questions about Qscoreboard, contact @danividanivi.
