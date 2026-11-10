@@ -61,7 +61,6 @@ DigitalClock::DigitalClock(QWidget *parent)
     timer = new QTimer(this);
     this->set_minutes(8);
     this->set_seconds(0);
-    time = QTime(0,this->get_minutes(),this->get_seconds());
     connect(timer, &QTimer::timeout, this, &DigitalClock::tickTime);
 
     showTime();
@@ -81,10 +80,7 @@ void DigitalClock::tickTime()
         }
     }
 
-    QString text = time.toString("mm:ss");
-    if ((time.second() % 2) == 0)
-        text[2] = ' ';
-    display(text);
+    showTime();
 }
 
 void DigitalClock::showTime()
