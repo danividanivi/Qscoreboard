@@ -1,5 +1,7 @@
 # Qscoreboard
 
+[![Build](https://github.com/danividanivi/Qscoreboard/actions/workflows/build.yml/badge.svg)](https://github.com/danividanivi/Qscoreboard/actions/workflows/build.yml)
+
 > **Project status:** I wrote Qscoreboard in 2019 as a volunteer project for
 > Club Waterpolo Lugo. Clubs still use it, so it stays available, but it is
 > not actively developed. The code reflects what I knew back then, not how I

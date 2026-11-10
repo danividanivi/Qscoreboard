@@ -1,0 +1,58 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Qt 5
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential qtbase5-dev qtmultimedia5-dev qt5-qmake
+
+      - name: Build
+        run: |
+          mkdir build && cd build
+          qmake ../Qscoreboard.pro
+          make -j"$(nproc)"
+
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Qt 5
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: '5.15.2'
+          arch: 'win64_msvc2019_64'
+
+      - name: Set up MSVC
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Build
+        shell: cmd
+        run: |
+          mkdir build
+          cd build
+          qmake ..\Qscoreboard.pro CONFIG+=release
+          nmake
+
+      - name: Package
+        shell: cmd
+        run: |
+          mkdir Qscoreboard
+          copy build\release\Qscoreboard.exe Qscoreboard\
+          windeployqt --release --no-translations Qscoreboard\Qscoreboard.exe
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Qscoreboard-windows-x64
+          path: Qscoreboard/
