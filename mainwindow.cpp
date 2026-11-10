@@ -10,8 +10,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     home_goals=0;
     away_goals=0;
-    home_timeoff=1;
-    away_timeoff=1;
+    home_timeouts=1;
+    away_timeouts=1;
     period=1;
     set_time_running(false);
     allow_negative = false;
@@ -71,42 +71,42 @@ void MainWindow::on_awayGoalMinusButton_clicked()
 
 void MainWindow::on_homeTimeoutPlusButton_clicked()
 {
-    add_home_timeoff(+1);
-    ui->homeTimeoutsDisplay->display(get_home_timeoff());
+    add_home_timeouts(+1);
+    ui->homeTimeoutsDisplay->display(get_home_timeouts());
 }
 
 void MainWindow::on_homeTimeoutMinusButton_clicked()
 {
-    if(get_home_timeoff()>0 || allow_negative==true){
-        add_home_timeoff(-1);
+    if(get_home_timeouts()>0 || allow_negative==true){
+        add_home_timeouts(-1);
     }
-    ui->homeTimeoutsDisplay->display(get_home_timeoff());
+    ui->homeTimeoutsDisplay->display(get_home_timeouts());
 }
 
 void MainWindow::on_awayTimeoutPlusButton_clicked()
 {
-    add_away_timeoff(+1);
+    add_away_timeouts(+1);
 
-    ui->awayTimeoutsDisplay->display(get_away_timeoff());
+    ui->awayTimeoutsDisplay->display(get_away_timeouts());
 }
 
 void MainWindow::on_awayTimeoutMinusButton_clicked()
 {
-    if(get_away_timeoff()>0 || allow_negative==true){
-        add_away_timeoff(-1);
+    if(get_away_timeouts()>0 || allow_negative==true){
+        add_away_timeouts(-1);
     }
 
-    ui->awayTimeoutsDisplay->display(get_away_timeoff());
+    ui->awayTimeoutsDisplay->display(get_away_timeouts());
 }
 
 void MainWindow::on_periodPlusButton_clicked()
 {
     add_period(+1);
-    set_home_timeoff(1);
-    set_away_timeoff(1);
+    set_home_timeouts(1);
+    set_away_timeouts(1);
     ui->periodDisplay->display(get_period());
-    ui->homeTimeoutsDisplay->display(get_home_timeoff());
-    ui->awayTimeoutsDisplay->display(get_away_timeoff());
+    ui->homeTimeoutsDisplay->display(get_home_timeouts());
+    ui->awayTimeoutsDisplay->display(get_away_timeouts());
 }
 
 void MainWindow::on_periodMinusButton_clicked()
