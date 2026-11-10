@@ -101,6 +101,7 @@ private slots:
 
 private:
     QString askForLogoFile();
+    void placeOnScreen(QWidget *window, int screenNumber);
 
     Ui::MainWindow *ui;
     int home_goals;

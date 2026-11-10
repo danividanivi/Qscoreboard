@@ -186,12 +186,9 @@ void MainWindow::on_gameClockResetButton_clicked()
 void MainWindow::on_addScoreScreenButton_clicked()
 {
     scoreWindowShown = true;
-    QRect screenres = QApplication::desktop()->screenGeometry(1/*screenNumber*/);
     scoreWindow = new ScoreDisplay();
-    scoreWindow->setAttribute(Qt::WA_ShowWithoutActivating);
-    scoreWindow->setWindowFlags(Qt::Tool | Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint);
-    scoreWindow->move(QPoint(screenres.x(), screenres.y()));
-    scoreWindow->resize(screenres.width(), screenres.height());
+    placeOnScreen(scoreWindow, 1);
+    // Note: this replaces the frameless/stay-on-top flags set in placeOnScreen().
     scoreWindow->setWindowFlags(Qt::Tool);
     scoreWindow->showFullScreen();
     connect(this, &MainWindow::homePictureChanged, scoreWindow, &ScoreDisplay::changeHomePicture);
@@ -203,14 +200,18 @@ void MainWindow::on_addScoreScreenButton_clicked()
 void MainWindow::on_addShotClockScreenButton_clicked()
 {
     shotClockWindowShown = true;
-    QRect screenres = QApplication::desktop()->screenGeometry(2/*screenNumber*/);
     shotClockWindow = new ShotClockDisplay();
-    shotClockWindow->setAttribute(Qt::WA_ShowWithoutActivating);
-    shotClockWindow->setWindowFlags(Qt::Tool | Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint);
-    shotClockWindow->move(QPoint(screenres.x(), screenres.y()));
-    shotClockWindow->resize(screenres.width(), screenres.height());
-
+    placeOnScreen(shotClockWindow, 2);
     shotClockWindow->showFullScreen();
+}
+
+void MainWindow::placeOnScreen(QWidget *window, int screenNumber)
+{
+    QRect screenres = QApplication::desktop()->screenGeometry(screenNumber);
+    window->setAttribute(Qt::WA_ShowWithoutActivating);
+    window->setWindowFlags(Qt::Tool | Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint);
+    window->move(QPoint(screenres.x(), screenres.y()));
+    window->resize(screenres.width(), screenres.height());
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event){
