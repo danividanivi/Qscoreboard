@@ -25,13 +25,13 @@ MainWindow::MainWindow(QWidget *parent) :
     //update secondary sreens (if they exist) every 1 millisecond
     timerScreens->start(1);
 
-    connect(timer, SIGNAL(timeout()), this, SLOT(tickShotClock()));
+    connect(timer, &QTimer::timeout, this, &MainWindow::tickShotClock);
     ui->setupUi(this);
     set_shot_clock(ui->shotClockInput->text().toInt());
-    connect(timerScreens, SIGNAL(timeout()), this, SLOT(updateScreens()));
+    connect(timerScreens, &QTimer::timeout, this, &MainWindow::updateScreens);
 
-    connect(ui->homeLogoLabel, SIGNAL(clicked()), this, SLOT(changeHomePicture()));
-    connect(ui->awayLogoLabel, SIGNAL(clicked()), this, SLOT(changeAwayPicture()));
+    connect(ui->homeLogoLabel, &ClickableLabel::clicked, this, &MainWindow::changeHomePicture);
+    connect(ui->awayLogoLabel, &ClickableLabel::clicked, this, &MainWindow::changeAwayPicture);
 }
 
 MainWindow::~MainWindow()
@@ -194,8 +194,8 @@ void MainWindow::on_addScoreScreenButton_clicked()
     scoreWindow->resize(screenres.width(), screenres.height());
     scoreWindow->setWindowFlags(Qt::Tool);
     scoreWindow->showFullScreen();
-    connect(this, SIGNAL(homePictureChanged(QString)), scoreWindow, SLOT(changeHomePicture(QString)));
-    connect(this, SIGNAL(awayPictureChanged(QString)), scoreWindow, SLOT(changeAwayPicture(QString)));
+    connect(this, &MainWindow::homePictureChanged, scoreWindow, &ScoreDisplay::changeHomePicture);
+    connect(this, &MainWindow::awayPictureChanged, scoreWindow, &ScoreDisplay::changeAwayPicture);
     emit homePictureChanged(homeFilename);
     emit awayPictureChanged(awayFilename);
 }
