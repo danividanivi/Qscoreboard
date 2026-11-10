@@ -31,13 +31,13 @@ public:
     void add_home_goals(int goals){home_goals = home_goals + goals;}
     void add_away_goals(int goals){away_goals = away_goals + goals;}
 
-    int get_home_timeoff(){return home_timeoff;}
-    int get_away_timeoff(){return away_timeoff;}
+    int get_home_timeouts(){return home_timeouts;}
+    int get_away_timeouts(){return away_timeouts;}
 
-    void add_home_timeoff(int timeoff){home_timeoff = home_timeoff + timeoff;}
-    void add_away_timeoff(int timeoff){away_timeoff = away_timeoff + timeoff;}
-    void set_home_timeoff(int timeoff){home_timeoff = timeoff;}
-    void set_away_timeoff(int timeoff){away_timeoff = timeoff;}
+    void add_home_timeouts(int timeouts){home_timeouts = home_timeouts + timeouts;}
+    void add_away_timeouts(int timeouts){away_timeouts = away_timeouts + timeouts;}
+    void set_home_timeouts(int timeouts){home_timeouts = timeouts;}
+    void set_away_timeouts(int timeouts){away_timeouts = timeouts;}
 
     void add_shot_clock(int time){shot_clock = shot_clock + time;}
     void set_shot_clock(int time){shot_clock = time;}
@@ -103,8 +103,8 @@ private:
     Ui::MainWindow *ui;
     int home_goals;
     int away_goals;
-    int home_timeoff;
-    int away_timeoff;
+    int home_timeouts;
+    int away_timeouts;
     int period;
 
     bool time_running;
