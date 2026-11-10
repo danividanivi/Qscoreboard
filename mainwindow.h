@@ -116,11 +116,9 @@ private:
     QTimer *timerScreens = new QTimer(this);
     int shot_clock;
 
-    ScoreDisplay *scoreWindow;
-    bool scoreWindowShown;
+    ScoreDisplay *scoreWindow = nullptr;
 
-    ShotClockDisplay *shotClockWindow;
-    bool shotClockWindowShown;
+    ShotClockDisplay *shotClockWindow = nullptr;
     bool shotClockHidden;
 
     QSound shotClockSound;
