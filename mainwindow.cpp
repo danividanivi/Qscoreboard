@@ -1,12 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "scoredisplay.h"
-#include "timeoffdisplay.h"
+#include "shotclockdisplay.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    timeOffSound(":/sound/sound/airhorn.wav")
+    shotClockSound(":/sound/sound/airhorn.wav")
 {
     home_goals=0;
     away_goals=0;
@@ -16,9 +16,8 @@ MainWindow::MainWindow(QWidget *parent) :
     set_time_running(false);
     allow_negative = false;
     secondScreen = false;
-    thirdScreen = false;
-    timeoffScreen = false;
-    timeoffHidden = false;
+    shotClockWindowShown = false;
+    shotClockHidden = false;
 
     homeFilename = ":/img/img/cwl500.png";
     awayFilename = ":/img/img/cwl500.png";
@@ -139,7 +138,7 @@ void MainWindow::update()
         if(get_shot_clock()>0 || allow_negative==true){
             add_shot_clock(-1);
             if(get_shot_clock()==0 ){
-                timeOffSound.play();
+                shotClockSound.play();
             }
         }
     }
@@ -155,7 +154,7 @@ void MainWindow::on_shotClockResetButton_clicked()
 
 void MainWindow::on_hornButton_clicked()
 {
-    timeOffSound.play();
+    shotClockSound.play();
 }
 
 void MainWindow::on_gameClockStartStopButton_clicked()
@@ -164,7 +163,7 @@ void MainWindow::on_gameClockStartStopButton_clicked()
     ui->main_clock_widget->start_stop();
     ui->shotClockStartStopButton->setEnabled(true);
 
-    //Timeoff clock is synchronized with main clock
+    //Shot clock is synchronized with main clock
     //If it is stopped, start. If it is running stop it.
     if(get_time_running())
     {
@@ -203,16 +202,15 @@ void MainWindow::on_addScoreScreenButton_clicked()
 
 void MainWindow::on_addShotClockScreenButton_clicked()
 {
-    thirdScreen = true;
-    timeoffScreen = true;
+    shotClockWindowShown = true;
     QRect screenres = QApplication::desktop()->screenGeometry(2/*screenNumber*/);
-    t = new TimeOffDisplay();
-    t->setAttribute(Qt::WA_ShowWithoutActivating);
-    t->setWindowFlags(Qt::Tool | Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint);
-    t->move(QPoint(screenres.x(), screenres.y()));
-    t->resize(screenres.width(), screenres.height());
+    shotClockWindow = new ShotClockDisplay();
+    shotClockWindow->setAttribute(Qt::WA_ShowWithoutActivating);
+    shotClockWindow->setWindowFlags(Qt::Tool | Qt::FramelessWindowHint|Qt::WindowStaysOnTopHint);
+    shotClockWindow->move(QPoint(screenres.x(), screenres.y()));
+    shotClockWindow->resize(screenres.width(), screenres.height());
 
-    t->showFullScreen();
+    shotClockWindow->showFullScreen();
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event){
@@ -230,26 +228,26 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
 
     if(event->key() == Qt::Key_PageUp)
     {
-        //Start/Stop Timeoff button
+        //Start/stop shot clock
         on_shotClockStartStopButton_clicked();
     }
 
     if(event->key() == Qt::Key_PageDown)
     {
-        //Reset button TimeOff
+        //Reset shot clock
         on_shotClockResetButton_clicked();
     }
 
     if(event->key() == Qt::Key_Minus)
     {
-        //Reset button 20 TimeOff
+        //Reset shot clock to the short value
         on_shotClockShortResetButton_clicked();
     }
 
     if(event->key() == Qt::Key_Alt)
     {
-        //Hide timeoff
-        hideTimeOff();
+        //Show/hide shot clock
+        toggleShotClockVisibility();
     }
 }
 
@@ -257,19 +255,19 @@ void MainWindow::updateScreens(){
     if(secondScreen==true){
         s->updateDisplay(get_home_goals(),get_away_goals(),get_shot_clock(), get_period(), this->ui->main_clock_widget->getTime());
     }
-    if(timeoffScreen==true){
-        t->updateDisplay(get_shot_clock(), timeoffHidden);
+    if(shotClockWindowShown==true){
+        shotClockWindow->updateDisplay(get_shot_clock(), shotClockHidden);
     }
 }
 
-void MainWindow::hideTimeOff(){
+void MainWindow::toggleShotClockVisibility(){
     if(this->ui->shotClockDisplay->isVisible()){
         this->ui->shotClockDisplay->hide();
-        timeoffHidden = true;
+        shotClockHidden = true;
     }
     else {
         this->ui->shotClockDisplay->show();
-        timeoffHidden = false;
+        shotClockHidden = false;
     }
 }
 

@@ -6,7 +6,7 @@
 #include <QtMultimedia/QSound>
 #include "scoredisplay.h"
 #include <QKeyEvent>
-#include "timeoffdisplay.h"
+#include "shotclockdisplay.h"
 #include <QDesktopWidget>
 #include <QFileDialog>
 
@@ -95,7 +95,7 @@ private slots:
 
     void on_addShotClockScreenButton_clicked();
 
-    void hideTimeOff();
+    void toggleShotClockVisibility();
 
     void on_shotClockShortResetButton_clicked();
 
@@ -117,12 +117,11 @@ private:
     ScoreDisplay *s;
     bool secondScreen;
 
-    TimeOffDisplay *t;
-    bool timeoffScreen;
-    bool timeoffHidden;
-    bool thirdScreen;
+    ShotClockDisplay *shotClockWindow;
+    bool shotClockWindowShown;
+    bool shotClockHidden;
 
-    QSound timeOffSound;
+    QSound shotClockSound;
 
     QString homeFilename;
     QString awayFilename;
