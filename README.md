@@ -1,4 +1,10 @@
 # Qscoreboard
+
+> **Project status:** I wrote Qscoreboard in 2019 as a volunteer project for
+> Club Waterpolo Lugo. Clubs still use it, so it stays available, but it is
+> not actively developed. The code reflects what I knew back then, not how I
+> write software today.
+
 Qscoreboard is software that can turn your computer into a scoreboard. 
 
 Do you organize a match, league, or cup? You don't need to buy a scoreboard, just download Qscoreboard and make use of your computer screens.
