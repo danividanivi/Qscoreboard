@@ -32,19 +32,19 @@ SOURCES += \
         mainwindow.cpp \
     digitalclock.cpp \
     scoredisplay.cpp \
-    timeoffdisplay.cpp
+    shotclockdisplay.cpp
 
 HEADERS += \
     clickablelabel.h \
         mainwindow.h \
     digitalclock.h \
     scoredisplay.h \
-    timeoffdisplay.h
+    shotclockdisplay.h
 
 FORMS += \
         mainwindow.ui \
     scoredisplay.ui \
-    timeoffdisplay.ui
+    shotclockdisplay.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
