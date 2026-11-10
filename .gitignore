@@ -1,0 +1,19 @@
+# Qt Creator per-user settings
+*.pro.user
+*.pro.user.*
+CMakeLists.txt.user*
+
+# Build output
+build-*/
+build/
+*.o
+*.obj
+moc_*.cpp
+moc_*.h
+moc_predefs.h
+qrc_*.cpp
+ui_*.h
+Makefile*
+*.exe
+release/
+debug/
