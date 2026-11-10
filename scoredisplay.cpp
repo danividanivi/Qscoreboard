@@ -14,10 +14,10 @@ ScoreDisplay::~ScoreDisplay()
 }
 
 void ScoreDisplay::updateDisplay(int home, int away, int shot_clock, int period, QTime time){
-    this->ui->lcdNumber->display(home);
-    this->ui->lcdNumber_2->display(away);
-    this->ui->lcdNumber_3->display(shot_clock);
-    this->ui->lcdNumber_4->display(period);
+    this->ui->homeGoalsDisplay->display(home);
+    this->ui->awayGoalsDisplay->display(away);
+    this->ui->shotClockDisplay->display(shot_clock);
+    this->ui->periodDisplay->display(period);
 
     this->ui->main_clock_widget->set_minutes(time.minute());
     this->ui->main_clock_widget->set_seconds(time.second());
@@ -27,13 +27,13 @@ void ScoreDisplay::updateDisplay(int home, int away, int shot_clock, int period,
 void ScoreDisplay::changeHomePicture(QString fileName)
 {
     if (!fileName.isEmpty()){
-        ui->label_11->setPixmap(fileName);
+        ui->homeLogoLabel->setPixmap(fileName);
     }
 }
 
 void ScoreDisplay::changeAwayPicture(QString fileName)
 {
     if (!fileName.isEmpty()){
-        ui->label_12->setPixmap(fileName);
+        ui->awayLogoLabel->setPixmap(fileName);
     }
 }
