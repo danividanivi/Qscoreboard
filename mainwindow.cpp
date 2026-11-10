@@ -183,20 +183,26 @@ void MainWindow::on_gameClockResetButton_clicked()
 
 void MainWindow::on_addScoreScreenButton_clicked()
 {
-    scoreWindow = new ScoreDisplay();
+    // Pressing the button again re-shows the existing window instead of
+    // opening a second one on top of it.
+    if(!scoreWindow){
+        scoreWindow = new ScoreDisplay();
+        connect(this, &MainWindow::homePictureChanged, scoreWindow, &ScoreDisplay::changeHomePicture);
+        connect(this, &MainWindow::awayPictureChanged, scoreWindow, &ScoreDisplay::changeAwayPicture);
+    }
     placeOnScreen(scoreWindow, 1);
     // Note: this replaces the frameless/stay-on-top flags set in placeOnScreen().
     scoreWindow->setWindowFlags(Qt::Tool);
     scoreWindow->showFullScreen();
-    connect(this, &MainWindow::homePictureChanged, scoreWindow, &ScoreDisplay::changeHomePicture);
-    connect(this, &MainWindow::awayPictureChanged, scoreWindow, &ScoreDisplay::changeAwayPicture);
     emit homePictureChanged(homeFilename);
     emit awayPictureChanged(awayFilename);
 }
 
 void MainWindow::on_addShotClockScreenButton_clicked()
 {
-    shotClockWindow = new ShotClockDisplay();
+    if(!shotClockWindow){
+        shotClockWindow = new ShotClockDisplay();
+    }
     placeOnScreen(shotClockWindow, 2);
     shotClockWindow->showFullScreen();
 }
