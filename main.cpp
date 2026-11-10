@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     w.move(QPoint(screenres.x(), screenres.y()));
     w.resize(screenres.width(), screenres.height());
     w.showFullScreen();
-    w.showFullScreen();   
+    w.showFullScreen();
 
     return a.exec();
 }

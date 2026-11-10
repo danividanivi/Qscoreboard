@@ -22,27 +22,18 @@ void ScoreDisplay::updateDisplay(int home, int away, int shot_clock, int period,
     this->ui->main_clock_widget->set_minutes(time.minute());
     this->ui->main_clock_widget->set_seconds(time.second());
     this->ui->main_clock_widget->showTime();
-
-
-
-
-
 }
 
 void ScoreDisplay::changeHomePicture(QString fileName)
 {
-
     if (!fileName.isEmpty()){
         ui->label_11->setPixmap(fileName);
     }
-
 }
 
 void ScoreDisplay::changeAwayPicture(QString fileName)
 {
-
     if (!fileName.isEmpty()){
         ui->label_12->setPixmap(fileName);
     }
-
 }

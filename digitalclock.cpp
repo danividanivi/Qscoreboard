@@ -49,7 +49,6 @@
 **
 ****************************************************************************/
 
-
 #include <QtWidgets>
 
 #include "digitalclock.h"
@@ -65,7 +64,6 @@ DigitalClock::DigitalClock(QWidget *parent)
     time = QTime(0,this->get_minutes(),this->get_seconds());
     connect(timer, &QTimer::timeout, this, &DigitalClock::tickTime);
 
-
     showTime();
 
     setWindowTitle(tr("Digital Clock"));
@@ -75,34 +73,26 @@ DigitalClock::DigitalClock(QWidget *parent)
 void DigitalClock::tickTime()
 {
     if(time>QTime(0,0,0)){
-            time = time.addSecs(-1);
+        time = time.addSecs(-1);
 
-            if(time==QTime(0,0,0)){
-                set_playing(false);
-                endSound.play();
-            }
+        if(time==QTime(0,0,0)){
+            set_playing(false);
+            endSound.play();
+        }
     }
-
 
     QString text = time.toString("mm:ss");
     if ((time.second() % 2) == 0)
         text[2] = ' ';
     display(text);
-
-
-
 }
 
 void DigitalClock::showTime()
 {
-
-
     QString text = time.toString("mm:ss");
     if ((time.second() % 2) == 0)
         text[2] = ' ';
     display(text);
-
-
 }
 
 QTime DigitalClock::getTime() const
@@ -114,7 +104,6 @@ void DigitalClock::setTime(const QTime &value)
 {
     time = value;
 }
-
 
 void DigitalClock::start_stop()
 {
@@ -128,5 +117,4 @@ void DigitalClock::start_stop()
         timer->start(1000);
         set_playing(true);
     }
-
 }

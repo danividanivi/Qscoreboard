@@ -23,11 +23,6 @@ MainWindow::MainWindow(QWidget *parent) :
     homeFilename = ":/img/img/cwl500.png";
     awayFilename = ":/img/img/cwl500.png";
 
-
-
-
-
-
     //update secondary sreens (if they exist) every 1 millisecond
     timerScreens->start(1);
 
@@ -38,11 +33,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->label_11, SIGNAL(clicked()), this, SLOT(changeHomePicture()));
     connect(ui->label_12, SIGNAL(clicked()), this, SLOT(changeAwayPicture()));
-
-
-
-
-
 }
 
 MainWindow::~MainWindow()
@@ -54,34 +44,29 @@ void MainWindow::on_pushButton_clicked()
 {
     add_home_goals(+1);
     ui->lcdNumber->display(get_home_goals());
-
 }
 
 void MainWindow::on_pushButton_2_clicked()
 {
     if(get_home_goals()>0 || allow_negative==true){
-            add_home_goals(-1);
+        add_home_goals(-1);
     }
 
     ui->lcdNumber->display(get_home_goals());
-
-
 }
 
 void MainWindow::on_pushButton_3_clicked()
 {
     add_away_goals(+1);
     ui->lcdNumber_2->display(get_away_goals());
-
 }
 
 void MainWindow::on_pushButton_4_clicked()
 {
     if(get_away_goals()>0 || allow_negative==true){
-    add_away_goals(-1);
+        add_away_goals(-1);
     }
-        ui->lcdNumber_2->display(get_away_goals());
-
+    ui->lcdNumber_2->display(get_away_goals());
 }
 
 void MainWindow::on_pushButton_7_clicked()
@@ -100,9 +85,7 @@ void MainWindow::on_pushButton_8_clicked()
 
 void MainWindow::on_pushButton_9_clicked()
 {
-
     add_away_timeoff(+1);
-
 
     ui->lcdNumber_7->display(get_away_timeoff());
 }
@@ -110,7 +93,7 @@ void MainWindow::on_pushButton_9_clicked()
 void MainWindow::on_pushButton_10_clicked()
 {
     if(get_away_timeoff()>0 || allow_negative==true){
-            add_away_timeoff(-1);
+        add_away_timeoff(-1);
     }
 
     ui->lcdNumber_7->display(get_away_timeoff());
@@ -146,30 +129,22 @@ void MainWindow::on_pushButton_11_clicked()
     else {
         timer->start(1000);
         time_running=true;
-
     }
-
-
 }
 
 void MainWindow::update()
 {
-
     if(ui->main_clock_widget->is_playing()){
         ui->pushButton_11->setEnabled(true);
         if(get_shot_clock()>0 || allow_negative==true){
-                add_shot_clock(-1);
-                if(get_shot_clock()==0 ){
-                    timeOffSound.play();
-                }
+            add_shot_clock(-1);
+            if(get_shot_clock()==0 ){
+                timeOffSound.play();
+            }
         }
     }
 
-
-
-
     ui->lcdNumber_3->display(get_shot_clock());
-
 }
 
 void MainWindow::on_pushButton_12_clicked()
@@ -189,22 +164,17 @@ void MainWindow::on_pushButton_14_clicked()
     ui->main_clock_widget->start_stop();
     ui->pushButton_11->setEnabled(true);
 
-
-
     //Timeoff clock is synchronized with main clock
     //If it is stopped, start. If it is running stop it.
     if(get_time_running())
     {
         timer->stop();
         set_time_running(false);
-
     }
     else {
         timer->start(1000);
         set_time_running(true);
-
     }
-
 }
 
 void MainWindow::on_pushButton_13_clicked()
@@ -229,14 +199,10 @@ void MainWindow::on_pushButton_16_clicked()
     connect(this, SIGNAL(awayPictureChanged(QString)), s, SLOT(changeAwayPicture(QString)));
     emit homePictureChanged(homeFilename);
     emit awayPictureChanged(awayFilename);
-
-
-
 }
 
 void MainWindow::on_pushButton_17_clicked()
 {
-
     thirdScreen = true;
     timeoffScreen = true;
     QRect screenres = QApplication::desktop()->screenGeometry(2/*screenNumber*/);
@@ -285,19 +251,14 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
         //Hide timeoff
         emit hideTimeOff();
     }
-
-
-
 }
 
 void MainWindow::updateScreens(){
     if(secondScreen==true){
         s->updateDisplay(get_home_goals(),get_away_goals(),get_shot_clock(), get_period(), this->ui->main_clock_widget->getTime());
-
     }
     if(timeoffScreen==true){
         t->updateDisplay(get_shot_clock(), timeoffHidden);
-
     }
 }
 
@@ -305,13 +266,11 @@ void MainWindow::hideTimeOff(){
     if(this->ui->lcdNumber_3->isVisible()){
         this->ui->lcdNumber_3->hide();
         timeoffHidden = true;
-
     }
     else {
         this->ui->lcdNumber_3->show();
         timeoffHidden = false;
     }
-
 }
 
 void MainWindow::changeHomePicture()
@@ -324,9 +283,6 @@ void MainWindow::changeHomePicture()
         ui->label_11->setPixmap(homeFilename);
         emit homePictureChanged(homeFilename);
     }
-
-
-
 }
 
 void MainWindow::changeAwayPicture()
@@ -339,7 +295,6 @@ void MainWindow::changeAwayPicture()
         ui->label_12->setPixmap(awayFilename);
         emit awayPictureChanged(awayFilename);
     }
-
 }
 
 void MainWindow::on_pushButton_18_clicked()

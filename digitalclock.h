@@ -49,7 +49,6 @@
 **
 ****************************************************************************/
 
-
 #ifndef DIGITALCLOCK_H
 #define DIGITALCLOCK_H
 
@@ -87,7 +86,6 @@ private:
 
     bool playing;
     QSound endSound;
-
 };
 
 #endif

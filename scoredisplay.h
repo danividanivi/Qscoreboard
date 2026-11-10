@@ -21,11 +21,8 @@ public slots:
     void changeHomePicture(QString fileName);
     void changeAwayPicture(QString fileName);
 
-
-
 private:
     Ui::ScoreDisplay *ui;
 };
-
 
 #endif // SCOREDISPLAY_H
