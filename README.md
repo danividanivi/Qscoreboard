@@ -13,6 +13,8 @@ Do you organize a match, league, or cup? You don't need to buy a scoreboard, jus
 
 Scoreboard application was originally created for waterpolo (and its 2019 rules) but can also be used for many other sports.
 
+![Qscoreboard main control screen](./img/screenshot.png)
+
 ## Installation
 Download [latest release .7z file](https://github.com/danividanivi/Qscoreboard/releases) and extract it to a folder of your choice.
 
