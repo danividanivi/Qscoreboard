@@ -22,17 +22,17 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    int get_period(){return period;}
+    int get_period() const {return period;}
     void add_period(int p){period = period + p;}
 
-    int get_home_goals(){return home_goals;}
-    int get_away_goals(){return away_goals;}
+    int get_home_goals() const {return home_goals;}
+    int get_away_goals() const {return away_goals;}
 
     void add_home_goals(int goals){home_goals = home_goals + goals;}
     void add_away_goals(int goals){away_goals = away_goals + goals;}
 
-    int get_home_timeouts(){return home_timeouts;}
-    int get_away_timeouts(){return away_timeouts;}
+    int get_home_timeouts() const {return home_timeouts;}
+    int get_away_timeouts() const {return away_timeouts;}
 
     void add_home_timeouts(int timeouts){home_timeouts = home_timeouts + timeouts;}
     void add_away_timeouts(int timeouts){away_timeouts = away_timeouts + timeouts;}
@@ -41,10 +41,10 @@ public:
 
     void add_shot_clock(int time){shot_clock = shot_clock + time;}
     void set_shot_clock(int time){shot_clock = time;}
-    int get_shot_clock(){return shot_clock;}
+    int get_shot_clock() const {return shot_clock;}
 
     void set_time_running(bool run){time_running = run;}
-    bool get_time_running(){return time_running;}
+    bool get_time_running() const {return time_running;}
 
 public slots:
     void changeHomePicture();
