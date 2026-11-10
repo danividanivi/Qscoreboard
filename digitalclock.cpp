@@ -64,7 +64,6 @@ DigitalClock::DigitalClock(QWidget *parent)
     this->set_seconds(0);
     time = QTime(0,this->get_minutes(),this->get_seconds());
     connect(timer, &QTimer::timeout, this, &DigitalClock::tickTime);
-    //timer->start(1000);
 
 
     showTime();
@@ -75,7 +74,6 @@ DigitalClock::DigitalClock(QWidget *parent)
 
 void DigitalClock::tickTime()
 {
-    //QTime time = QTime::currentTime();
     if(time>QTime(0,0,0)){
             time = time.addSecs(-1);
 
@@ -97,7 +95,6 @@ void DigitalClock::tickTime()
 
 void DigitalClock::showTime()
 {
-    //QTime time = QTime::currentTime();
 
 
     QString text = time.toString("mm:ss");
